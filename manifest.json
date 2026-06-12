@@ -1,0 +1,47 @@
+{
+  "id": "/wasm-ss/",
+  "name": "Sleep Scoring",
+  "short_name": "SleepScore",
+  "description": "Offline-first actigraphy sleep scoring. Files, markers, and reports are processed and stored entirely on this device — nothing is uploaded.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#0c1f5c",
+  "theme_color": "#1e40af",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["health", "medical", "productivity", "utilities"],
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "./icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open files",
+      "short_name": "Files",
+      "description": "Open the data settings page to load CSV/GT3X/BIN files",
+      "url": "./settings/data",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Score",
+      "short_name": "Score",
+      "description": "Open the scoring workspace",
+      "url": "./scoring",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Export",
+      "short_name": "Export",
+      "description": "Download CSV / GGIR report",
+      "url": "./export",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "prefer_related_applications": false
+}

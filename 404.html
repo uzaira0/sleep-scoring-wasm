@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39; &#39;wasm-unsafe-eval&#39;; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39;; img-src &#39;self&#39; data: blob:; style-src &#39;self&#39; &#39;unsafe-inline&#39;; font-src &#39;self&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; manifest-src &#39;self&#39;">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Offline-first actigraphy sleep scoring. Files, markers, and reports are processed and stored entirely on this device — nothing is uploaded." />
+    <title>Sleep Scoring</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <meta name="theme-color" content="#1e40af" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SleepScore" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Sleep Scoring" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- Fonts are self-hosted (src/fonts.css + src/fonts/*.woff2) so the
+         WASM build makes zero outbound network requests at runtime. -->
+    <!-- Preload the primary woff2 weights so first paint doesn't wait
+         for the @font-face roundtrip after CSS parsing. Pre-loaded fonts
+         show up as 0 ms in font swap, which reduces CLS and improves
+         Speed Index on cold visits. The brotli-encoded names are stable
+         across builds (Vite hashes only changed assets). -->
+    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-CeDh6fQP.js" integrity="sha384-IAVuwvhO1eZMFwUSms6WQKMM6B4Q+ps+BtxB8kDVYEvfoFh6aQlaFKRiwrOrzOXe"></script>
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/rolldown-runtime-C_ttsnZz.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/vendor-BjJoN1Es.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dexie-Dx4A0ZP1.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workspace-db-5JH9nX2Y.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/store-aJ5nsJzc.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/wal-C7d5DxQn.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/persistent-storage-aHwDqFY0.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/db-B1CckVcA.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/zod-D9iDOekG.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schemas-Do7mMRoW.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workers-D0yO2jfQ.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-Bp55czqn.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/utils-Bp-NUIoq.js">
+    <link rel="stylesheet" crossorigin href="/sleep-scoring-wasm/assets/index-Dfo2Zdnz.css" integrity="sha384-rlVaQNF19pgm5onSSAIwjw4Qfb7E6i+/k2IvwXuFvUn8n9EJoaPiOKKwJgcJ0l6G">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/sleep-scoring-wasm/config.js"></script>
+    <script src="/sleep-scoring-wasm/partial-import-sentinel.js" integrity="sha384-uxmv1s2t/MmcntD/4XJ8mNHwX70S+P+GPuMPYSAGhdFRLyhI71cBeRgF/siIBBeN" crossorigin="anonymous"></script>
+  </body>
+</html>

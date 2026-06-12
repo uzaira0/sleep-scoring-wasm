@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Sleep Scoring">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#0c1f5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Crescent moon -->
+  <path d="M340 116
+           a160 160 0 1 0 56 296
+           a128 128 0 1 1 -56 -296 z"
+        fill="#fde68a"/>
+  <!-- Activity baseline / pulse -->
+  <path d="M64 364 L150 364 L186 304 L228 424 L268 296 L308 408 L344 364 L448 364"
+        fill="none" stroke="#93c5fd" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"
+        opacity="0.95"/>
+</svg>

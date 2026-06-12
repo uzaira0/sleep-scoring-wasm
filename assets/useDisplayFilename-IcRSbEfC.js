@@ -1,0 +1,1 @@
+import{o as n}from"./store-aJ5nsJzc.js";function e(){const e=n(n=>n.hideFilenames);return(n,t)=>e?function(n,e){return void 0!==e?`File ${e+1}`:"File ••••••"}(0,t):n}function t(){const e=n(n=>n.hideFilenames);return n=>e?function(n){return n?"ID ••••":"—"}(n):n||"—"}export{t as n,e as t};

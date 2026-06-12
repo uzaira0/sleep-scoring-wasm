@@ -1,0 +1,1 @@
+import{M as r,P as o}from"./vendor-BjJoN1Es.js";function t(...t){return r(o(t))}export{t};

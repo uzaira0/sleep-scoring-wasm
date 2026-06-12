@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Sleep Scoring (maskable)">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#0c1f5c"/>
+    </linearGradient>
+  </defs>
+  <!-- Maskable safe zone: 80% inner; bleed colour to all edges -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Crescent moon, centered in safe zone (51px-461px) -->
+  <path d="M328 156
+           a128 128 0 1 0 44 236
+           a102 102 0 1 1 -44 -236 z"
+        fill="#fde68a"/>
+  <path d="M104 348 L172 348 L202 296 L238 396 L272 284 L308 380 L340 348 L408 348"
+        fill="none" stroke="#93c5fd" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"
+        opacity="0.95"/>
+</svg>
