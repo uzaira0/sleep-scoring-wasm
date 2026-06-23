@@ -176,15 +176,20 @@ jobs:
           PUB_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           cd release-assets
           sanitize() { echo "$1" | sed 's/ /./g'; }
-          WIN_NSIS_ZIP=$(ls *.nsis.zip 2>/dev/null | grep -v '\.sig$' | head -1 || true)
+          # Tauri v2 NSIS updater artifact is the -setup.exe itself plus its
+          # .sig (there is no .nsis.zip in v2). The updater downloads and runs
+          # the installer silently.
+          WIN_EXE=$(ls *-setup.exe 2>/dev/null | head -1 || true)
           WIN_SIG=""
-          if [[ -n "$WIN_NSIS_ZIP" && -f "${WIN_NSIS_ZIP}.sig" ]]; then
-            WIN_SIG=$(cat "${WIN_NSIS_ZIP}.sig")
+          if [[ -n "$WIN_EXE" && -f "${WIN_EXE}.sig" ]]; then
+            WIN_SIG=$(cat "${WIN_EXE}.sig")
           fi
-          if [[ -z "$WIN_NSIS_ZIP" || -z "$WIN_SIG" ]]; then
-            echo "::error::No signed Windows NSIS updater artifact (.nsis.zip + .sig) found"; ls -la; exit 1
+          if [[ -z "$WIN_EXE" || -z "$WIN_SIG" ]]; then
+            echo "::error::No signed Windows NSIS installer (-setup.exe + .sig) found"; ls -la; exit 1
           fi
-          WIN_URL="${BASE_URL}/$(sanitize "$WIN_NSIS_ZIP")"
+          # GitHub replaces spaces with dots in release asset filenames, so the
+          # updater URL must reference the sanitized name.
+          WIN_URL="${BASE_URL}/$(sanitize "$WIN_EXE")"
           cat > ../latest.json <<ENDJSON
           {
             "version": "v${VERSION}",
@@ -208,6 +213,6 @@ jobs:
           body: |
             Sleep Scoring desktop app (Tauri) ${{ steps.collect.outputs.tag }} — Windows.
 
-            - `.exe` / `.msi` installer.
-            - `.nsis.zip` + `.sig` + `latest.json` drive the in-app auto-updater.
+            - `*-setup.exe` — NSIS installer (download + run).
+            - `*-setup.exe.sig` + `latest.json` drive the in-app auto-updater.
           files: release-assets/*
