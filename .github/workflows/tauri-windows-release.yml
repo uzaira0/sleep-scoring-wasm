@@ -1,0 +1,213 @@
+name: Tauri Windows Release
+
+# Builds the Sleep Scoring desktop app for Windows on THIS public repo's FREE
+# Actions minutes. The private uzaira0/sleep-scoring-web repo holds the source
+# but its paid runners are billing-blocked, so the build is relocated here.
+#
+# Two jobs:
+#   1. frontend (ubuntu) — clone the private web source + actours via read-only
+#      deploy keys, build the WASM crates + the Vite frontend, upload dist/.
+#      (This half is proven on Linux in the web repo's build.yml.)
+#   2. windows — restore dist/, compile + sign the Tauri bundle, and publish a
+#      GitHub Release ON THIS repo with the native GITHUB_TOKEN (no cross-repo
+#      PAT needed) so end users / the auto-updater can download the installer.
+#
+# Secrets (on uzaira0/sleep-scoring-wasm):
+#   WEB_SOURCE_SSH_KEY  - read-only deploy key for uzaira0/sleep-scoring-web
+#   ACTOURS_SSH_KEY     - read-only deploy key for uzaira0/actours
+#   TAURI_SIGNING_PRIVATE_KEY[_PASSWORD] - updater signing key matching the
+#                         pubkey committed in src-tauri/tauri.conf.json
+
+on:
+  workflow_dispatch:
+    inputs:
+      web_rev:
+        description: 'sleep-scoring-web ref to build'
+        default: main
+      prerelease:
+        description: 'Mark the release as a prerelease'
+        type: boolean
+        default: false
+
+concurrency:
+  group: tauri-windows-release
+  cancel-in-progress: false
+
+jobs:
+  frontend:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Configure SSH deploy keys
+        shell: bash
+        env:
+          WEB_SOURCE_SSH_KEY: ${{ secrets.WEB_SOURCE_SSH_KEY }}
+          ACTOURS_SSH_KEY: ${{ secrets.ACTOURS_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$WEB_SOURCE_SSH_KEY" > ~/.ssh/web_ed25519
+          printf '%s\n' "$ACTOURS_SSH_KEY" > ~/.ssh/actours_ed25519
+          chmod 600 ~/.ssh/web_ed25519 ~/.ssh/actours_ed25519
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Clone private web source
+        shell: bash
+        run: |
+          GIT_SSH_COMMAND="ssh -i $HOME/.ssh/web_ed25519 -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
+            git clone --depth 1 --branch "${{ github.event.inputs.web_rev }}" \
+              git@github.com:uzaira0/sleep-scoring-web.git source
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install wasm-pack
+        shell: bash
+        run: which wasm-pack || cargo install wasm-pack
+
+      - name: Build WASM from actours
+        shell: bash
+        run: |
+          GIT_SSH_COMMAND="ssh -i $HOME/.ssh/actours_ed25519 -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
+            git clone --depth 1 --branch main git@github.com:uzaira0/actours.git actours-src
+          cd actours-src/crates/actours
+          wasm-pack build --target web --no-default-features --features wasm
+          mkdir -p "$GITHUB_WORKSPACE/source/frontend/src/wasm/pkg"
+          cp -r pkg/* "$GITHUB_WORKSPACE/source/frontend/src/wasm/pkg/"
+
+      - name: Build diary_rdf WASM
+        shell: bash
+        run: |
+          cd source/packages/sleep-diary-validator/rust-rdf
+          wasm-pack build --target web --no-default-features --features wasm
+          mkdir -p "$GITHUB_WORKSPACE/source/frontend/src/wasm/pkg/diary-rdf"
+          cp -r pkg/* "$GITHUB_WORKSPACE/source/frontend/src/wasm/pkg/diary-rdf/"
+
+      - name: Install frontend dependencies
+        working-directory: source/frontend
+        shell: bash
+        # --ignore-scripts blocks postinstall supply-chain payloads.
+        # TODO(pnpm-v10): migrate to `pnpm install --frozen-lockfile`. See docs/supply-chain.md.
+        run: npm install --no-audit --no-fund --legacy-peer-deps --ignore-scripts
+
+      - name: Build frontend
+        working-directory: source/frontend
+        run: npx vite build
+
+      - name: Upload frontend dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: source/frontend/dist
+          if-no-files-found: error
+          retention-days: 1
+
+  windows:
+    needs: frontend
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Configure SSH deploy key (web source)
+        shell: bash
+        env:
+          WEB_SOURCE_SSH_KEY: ${{ secrets.WEB_SOURCE_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$WEB_SOURCE_SSH_KEY" > ~/.ssh/web_ed25519
+          chmod 600 ~/.ssh/web_ed25519
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Clone private web source
+        shell: bash
+        run: |
+          GIT_SSH_COMMAND="ssh -i $HOME/.ssh/web_ed25519 -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
+            git clone --depth 1 --branch "${{ github.event.inputs.web_rev }}" \
+              git@github.com:uzaira0/sleep-scoring-web.git source
+
+      - name: Restore frontend dist
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: source/frontend/dist
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Validate updater config
+        shell: bash
+        run: |
+          PUBKEY=$(jq -r '.plugins.updater.pubkey' source/src-tauri/tauri.conf.json)
+          if [[ "$PUBKEY" == "REPLACE_WITH_PUBLIC_KEY" || -z "$PUBKEY" || "$PUBKEY" == "null" ]]; then
+            echo "::error::Updater public key missing or placeholder"; exit 1
+          fi
+
+      - name: Install Tauri CLI v2
+        run: npm install -g @tauri-apps/cli@^2
+
+      - name: Build Tauri (Windows)
+        working-directory: source
+        run: tauri build
+        env:
+          CI: 'true'
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
+      - name: Collect bundles and generate latest.json
+        id: collect
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-assets
+          find source/src-tauri/target -path '*/release/bundle/*' -type f \
+            \( -name '*.exe' -o -name '*.msi' -o -name '*.nsis.zip' -o -name '*.sig' \) \
+            -exec cp {} release-assets/ \;
+          echo "Collected assets:"; ls -la release-assets/
+          VERSION=$(jq -r '.version' source/src-tauri/tauri.conf.json)
+          TAG="tauri-v${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          REPO="uzaira0/sleep-scoring-wasm"
+          BASE_URL="https://github.com/${REPO}/releases/download/${TAG}"
+          PUB_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          cd release-assets
+          sanitize() { echo "$1" | sed 's/ /./g'; }
+          WIN_NSIS_ZIP=$(ls *.nsis.zip 2>/dev/null | grep -v '\.sig$' | head -1 || true)
+          WIN_SIG=""
+          if [[ -n "$WIN_NSIS_ZIP" && -f "${WIN_NSIS_ZIP}.sig" ]]; then
+            WIN_SIG=$(cat "${WIN_NSIS_ZIP}.sig")
+          fi
+          if [[ -z "$WIN_NSIS_ZIP" || -z "$WIN_SIG" ]]; then
+            echo "::error::No signed Windows NSIS updater artifact (.nsis.zip + .sig) found"; ls -la; exit 1
+          fi
+          WIN_URL="${BASE_URL}/$(sanitize "$WIN_NSIS_ZIP")"
+          cat > ../latest.json <<ENDJSON
+          {
+            "version": "v${VERSION}",
+            "notes": "Sleep Scoring desktop ${TAG}",
+            "pub_date": "${PUB_DATE}",
+            "platforms": {
+              "windows-x86_64": { "signature": "${WIN_SIG}", "url": "${WIN_URL}" }
+            }
+          }
+          ENDJSON
+          sed -i 's/^          //' ../latest.json
+          cp ../latest.json .
+          echo "Generated latest.json:"; cat ../latest.json
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        with:
+          tag_name: ${{ steps.collect.outputs.tag }}
+          name: Sleep Scoring Desktop ${{ steps.collect.outputs.tag }}
+          prerelease: ${{ github.event.inputs.prerelease == 'true' }}
+          body: |
+            Sleep Scoring desktop app (Tauri) ${{ steps.collect.outputs.tag }} — Windows.
+
+            - `.exe` / `.msi` installer.
+            - `.nsis.zip` + `.sig` + `latest.json` drive the in-app auto-updater.
+          files: release-assets/*
