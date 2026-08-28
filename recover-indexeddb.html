@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sleep Scoring IndexedDB Recovery</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+        color: #172033;
+        background: #f6f7f9;
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 20px;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 0 0 8px;
+      }
+      p {
+        line-height: 1.5;
+      }
+      button,
+      input::file-selector-button {
+        border: 1px solid #a9b2c3;
+        background: #fff;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font: inherit;
+      }
+      button.primary {
+        background: #172033;
+        border-color: #172033;
+        color: white;
+      }
+      button.danger {
+        border-color: #b42318;
+        color: #b42318;
+      }
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+      }
+      .panel {
+        background: white;
+        border: 1px solid #d8dee8;
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 16px;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        border-radius: 8px;
+        padding: 12px;
+        overflow: auto;
+        max-height: 360px;
+        font-size: 12px;
+      }
+      .warning {
+        border-left: 4px solid #b42318;
+      }
+      .muted {
+        color: #5f6b7a;
+        font-size: 14px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Sleep Scoring IndexedDB Recovery</h1>
+      <p class="muted">
+        This page bypasses the React app and directly exports or restores browser-local
+        Sleep Scoring data for the current origin. Use it before clearing site data.
+      </p>
+
+      <section class="panel warning">
+        <strong>Important:</strong>
+        <p>
+          Browser data is separated by protocol. The HTTP origin and HTTPS origin have
+          different IndexedDB databases. Export from the origin that still has the data,
+          then import on the origin where you want the app to see it.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Current Origin</h2>
+        <p id="origin"></p>
+        <div class="actions">
+          <button id="scan" class="primary" type="button">Scan Local Databases</button>
+          <button id="export" type="button" disabled>Export Recovery JSON</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Restore Recovery JSON Into This Origin</h2>
+        <p class="muted">
+          Import deletes and recreates only matching databases in this origin before
+          restoring the backup. It does not touch the other protocol origin.
+        </p>
+        <label>
+          Recovery JSON
+          <input id="importFile" type="file" accept="application/json,.json" />
+        </label>
+        <div class="actions">
+          <button id="import" class="danger" type="button" disabled>Import Into This Origin</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Log</h2>
+        <pre id="log"></pre>
+      </section>
+    </main>
+    <script src="./recover-indexeddb.js"></script>
+  </body>
+</html>

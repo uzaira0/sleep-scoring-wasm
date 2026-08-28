@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ActoGlance">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="32" x2="440" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111111"/>
+      <stop offset="0.52" stop-color="#050505"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="124" y1="116" x2="386" y2="384" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff3b0"/>
+      <stop offset="0.28" stop-color="#f6d365"/>
+      <stop offset="0.58" stop-color="#c99524"/>
+      <stop offset="1" stop-color="#8f6412"/>
+    </linearGradient>
+    <linearGradient id="traceGold" x1="214" y1="232" x2="428" y2="296" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff8c8"/>
+      <stop offset="0.45" stop-color="#f0c94d"/>
+      <stop offset="1" stop-color="#b98117"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="106" fill="url(#bg)"/>
+  <rect x="27" y="27" width="458" height="458" rx="103" fill="none" stroke="#d7ad42" stroke-opacity="0.2" stroke-width="3"/>
+  <text x="82" y="320" fill="url(#gold)" font-family="Avenir Next, Inter, SF Pro Display, Helvetica Neue, Arial, sans-serif" font-size="214" font-weight="760" letter-spacing="-18">A</text>
+  <text x="242" y="326" fill="url(#gold)" font-family="Avenir Next, Inter, SF Pro Display, Helvetica Neue, Arial, sans-serif" font-size="214" font-weight="720" letter-spacing="-12">g</text>
+  <path d="M224 263h36l18-32 28 86 28-116 31 96 19-34h48" fill="none" stroke="url(#traceGold)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
