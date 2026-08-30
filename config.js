@@ -1,1 +1,1 @@
-window.__CONFIG__={basePath:"/sleep-scoring-wasm"}
+window.__CONFIG__ = { basePath: "/sleep-scoring-wasm" };
