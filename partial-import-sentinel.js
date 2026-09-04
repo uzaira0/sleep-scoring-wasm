@@ -1,6 +1,11 @@
 (function () {
   try {
-    var startedAt = localStorage.getItem("sleep-scoring:import-in-progress");
+    var sentinelPrefix = "sleep-scoring:import-in-progress";
+    var startedAt = localStorage.getItem(sentinelPrefix);
+    for (var i = 0; !startedAt && i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key && key.indexOf(sentinelPrefix) === 0) startedAt = localStorage.getItem(key);
+    }
     if (!startedAt) return;
 
     // Log once; the dispatch below repeats until React mounts a listener.
