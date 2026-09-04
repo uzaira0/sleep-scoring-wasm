@@ -28,30 +28,35 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Sleep Scoring" />
     <meta name="format-detection" content="telephone=no" />
-    <!-- Fonts are self-hosted (src/fonts.css + src/fonts/*.woff2) so the
-         WASM build makes zero outbound network requests at runtime. -->
-    <!-- Preload the primary woff2 weights so first paint doesn't wait
-         for the @font-face roundtrip after CSS parsing. Pre-loaded fonts
-         show up as 0 ms in font swap, which reduces CLS and improves
-         Speed Index on cold visits. The brotli-encoded names are stable
-         across builds (Vite hashes only changed assets). -->
-    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-BCIiGnYf.js" integrity="sha384-/ZAbl9/JCZ4pL4Ov5nqhD1ED44SOAt57K8mvrhOMl9qoHMYVpIxHnxC02svbXhBJ"></script>
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/rolldown-runtime-Djccxexk.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/vendor-jZFRR2XI.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dexie-8BDMvfmE.js">
+    <!-- Fonts are self-hosted from the vendored Equal token sheet
+         (src/vendor/eqds/tokens/src/tokens.css + fonts/*.woff2) so the WASM
+         build makes zero outbound network requests at runtime. The two
+         400-weight faces are preloaded so first paint does not wait for the
+         @font-face roundtrip after CSS parsing; Vite rewrites these hrefs to
+         the same hashed assets the stylesheet resolves to. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/sleep-scoring-wasm/assets/atkinson-hyperlegible-latin-400-normal-BrHNak5F.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/sleep-scoring-wasm/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2" />
+    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-CGdRRPvU.js" integrity="sha384-eUHr6H/SQTeld7E95c/TCPZMzhUSTx19Xvy0owXmFgqe6Jm42GbMTTkX/dzr6Fjm"></script>
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/rolldown-runtime-C_JJxWoe.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/vendor-CVte9DUv.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dexie-DkkgZcDH.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schema-Dayx2d8i.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/updater-d4Vpq20P.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/wal-BF_GPhQn.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/audit-events-562scYbb.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schema-CcNp4oW1.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/updater-RDM13xJa.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/project-revision-gZuPsRWL.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/store-BOJZKbV2.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/wal-0DwZsHxy.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/persistent-storage-BiLkp2vu.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-anchors-Ccwx7STq.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/zod-C0g_jP_q.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schemas-DNSMJUon.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workers-bWbSFRfb.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-context-DYfqxih2.js">
-    <link rel="stylesheet" crossorigin href="/sleep-scoring-wasm/assets/index-BdHebZ-N.css" integrity="sha384-HCX77LEzIxGGiHar2Kz6MrERoUEBZuVrrPsToAQB8LH/+X1Q0cB6jS8Aj5qbUX4K">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/store-D0wN-_3y.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/button-Bl9rH_hn.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/persistent-storage-DxWDDQe9.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workers-Dkvgx0Um.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-anchors-D71ORkMF.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/zod-B4OSv-DV.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schemas-DLVUMjX0.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-context-DcsG5UdA.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/useDisplayFilename-VNJU8DyU.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/query-options-D90cM0EO.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-query-keys-DpVb96f8.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/staged-diary-import-ot3O5SLb.js">
+    <link rel="stylesheet" crossorigin href="/sleep-scoring-wasm/assets/index-DDAW8pxZ.css" integrity="sha384-ma125FcHi8Qu2mJzmI1JMw7sZuJTezRtE6CjG3pxGynWiM2GehdVC0qKWA13xc4P">
   </head>
   <body>
     <div id="root"></div>
