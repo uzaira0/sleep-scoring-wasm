@@ -1,1 +1,0 @@
-function t({id:t,filename:a,participantId:n=null,dates:e=[],dateCount:l=e.length,recordedStart:d=e[0],recordedEnd:r=e.at(-1),format:u=null,status:i=null}){return{id:t??null,filename:a,participantId:n,dateCount:l,dateRange:null==d||null==r?"No dates":d===r?d:`${d} – ${r}`,format:u,status:i}}export{t};
