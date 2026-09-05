@@ -1,1 +1,0 @@
-import{a as r}from"./rolldown-runtime-BEU_UCik.js";import{Qn as t,tr as a}from"./vendor-DIn5fdGA.js";import{n as o}from"./button-Db6E5ZyL.js";a();var s=t();function e({as:r,className:t,...a}){return(0,s.jsx)(r??"span",{className:o("text-[11px] font-bold uppercase tracking-[.06em] text-muted-foreground whitespace-nowrap",t),...a})}export{e as t};
