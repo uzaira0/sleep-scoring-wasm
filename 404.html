@@ -22,6 +22,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/sleep-scoring-wasm/apple-touch-icon.png" />
     <meta name="theme-color" content="#1e40af" />
     <meta name="color-scheme" content="light dark" />
+    <!-- Stamps data-eq-theme on <html> BEFORE first paint (ThemeProvider only
+         does it from an effect), so a dark-mode user does not get a white page
+         between the PWA splash and the first React effect. A file, not inline:
+         CSP is script-src 'self'. Base-absolute for the same reason as the
+         <link>s above. -->
+    <script src="/sleep-scoring-wasm/theme-init.js" integrity="sha384-pGYqDwgJCuTKP326LihYwtyILjyMh7/dyr8C6sORJPnS5tWF9wLlsme196zbSTpk" crossorigin="anonymous"></script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="SleepScore" />
@@ -36,7 +42,7 @@
          the same hashed assets the stylesheet resolves to. -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/sleep-scoring-wasm/assets/atkinson-hyperlegible-latin-400-normal-BrHNak5F.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/sleep-scoring-wasm/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2" />
-    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-BCi8qX44.js" integrity="sha384-ztHPaBEuZm48gd/oB1fB7quMgXpFWcTMEgvOg8DPGfzKQ8MG0fTGAS1H/eJ7jzCJ"></script>
+    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-B0Ry5nEI.js" integrity="sha384-p8i7DpGsciwK0pRUUaYCCVaihStL1eMy8y9Q7b3gS74vDmQaQb19B8vMg2ub//On"></script>
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/rolldown-runtime-BEU_UCik.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/vendor-CNZDCn5n.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dexie-CLyyYR9D.js">
