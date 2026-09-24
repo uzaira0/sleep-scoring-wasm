@@ -1,0 +1,1409 @@
+function n(n, e) {
+	return new Promise((t) => {
+		n.addEventListener("message", function _({ data: r }) {
+			null != r && r.type === e && (n.removeEventListener("message", _), t(r));
+		});
+	});
+}
+n(self, "wasm_bindgen_worker_init").then(async (n) => {
+	const e = await import(n.mainJS);
+	await e.default(n.module, n.memory), postMessage({ type: "wasm_bindgen_worker_ready" }), e.wbg_rayon_start_worker(n.receiver);
+});
+var e = class n {
+	static __wrap(e) {
+		e >>>= 0;
+		const t = Object.create(n.prototype);
+		return t.__wbg_ptr = e, ce.register(t, t.__wbg_ptr, t), t;
+	}
+	__destroy_into_raw() {
+		const n = this.__wbg_ptr;
+		return this.__wbg_ptr = 0, ce.unregister(this), n;
+	}
+	free() {
+		const n = this.__destroy_into_raw();
+		Be.__wbg_streamchunkresult_free(n, 0);
+	}
+	get anglex5s() {
+		const n = Be.streamchunkresult_anglex5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get angley5s() {
+		const n = Be.streamchunkresult_angley5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get anglez5s() {
+		const n = Be.streamchunkresult_anglez5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get axisX() {
+		const n = Be.streamchunkresult_axisX(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get axisY() {
+		const n = Be.streamchunkresult_axisY(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get axisZ() {
+		const n = Be.streamchunkresult_axisZ(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get canonicalPassDegraded() {
+		return 0 !== Be.streamchunkresult_canonicalPassDegraded(this.__wbg_ptr);
+	}
+	get canonicalPassReason() {
+		const n = Be.streamchunkresult_canonicalPassReason(this.__wbg_ptr);
+		let e;
+		return 0 !== n[0] && (e = ye(n[0], n[1]).slice(), Be.__wbindgen_free(n[0], 1 * n[1], 1)), e;
+	}
+	get counts() {
+		const n = Be.streamchunkresult_counts(this.__wbg_ptr);
+		var e = be(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 4 * n[1], 4), e;
+	}
+	get counts5s() {
+		const n = Be.streamchunkresult_counts5s(this.__wbg_ptr);
+		var e = be(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 4 * n[1], 4), e;
+	}
+	get enmo5s() {
+		const n = Be.streamchunkresult_enmo5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get enmoa5s() {
+		const n = Be.streamchunkresult_enmoa5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get headerRowsSkipped() {
+		return Be.streamchunkresult_headerRowsSkipped(this.__wbg_ptr) >>> 0;
+	}
+	get mad5s() {
+		const n = Be.streamchunkresult_mad5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get mimsUnit() {
+		const n = Be.streamchunkresult_mimsUnit(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get mimsUnitAvailable() {
+		return 0 !== Be.streamchunkresult_mimsUnitAvailable(this.__wbg_ptr);
+	}
+	get mimsUnitReason() {
+		const n = Be.streamchunkresult_mimsUnitReason(this.__wbg_ptr);
+		let e;
+		return 0 !== n[0] && (e = ye(n[0], n[1]).slice(), Be.__wbindgen_free(n[0], 1 * n[1], 1)), e;
+	}
+	get mimsUnitX() {
+		const n = Be.streamchunkresult_mimsUnitX(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get mimsUnitY() {
+		const n = Be.streamchunkresult_mimsUnitY(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get mimsUnitZ() {
+		const n = Be.streamchunkresult_mimsUnitZ(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get rawRetentionDegraded() {
+		return 0 !== Be.streamchunkresult_rawRetentionDegraded(this.__wbg_ptr);
+	}
+	get rowCount() {
+		return Be.streamchunkresult_rowCount(this.__wbg_ptr) >>> 0;
+	}
+	get rowsDropped() {
+		return Be.streamchunkresult_rowsDropped(this.__wbg_ptr) >>> 0;
+	}
+	get sampleFrequency() {
+		return Be.streamchunkresult_sampleFrequency(this.__wbg_ptr) >>> 0;
+	}
+	get tempCounts() {
+		const n = Be.streamchunkresult_tempCounts(this.__wbg_ptr);
+		var e = be(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 4 * n[1], 4), e;
+	}
+	get temperature() {
+		const n = Be.streamchunkresult_temperature(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get timestampsMs() {
+		const n = Be.streamchunkresult_timestampsMs(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get timestampsMs5s() {
+		const n = Be.streamchunkresult_timestampsMs5s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get vectorMagnitude() {
+		const n = Be.streamchunkresult_vectorMagnitude(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get zcx60s() {
+		const n = Be.streamchunkresult_zcx60s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get zcy60s() {
+		const n = Be.streamchunkresult_zcy60s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get zcz60s() {
+		const n = Be.streamchunkresult_zcz60s(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+};
+Symbol.dispose && (e.prototype[Symbol.dispose] = e.prototype.free);
+var t = class n {
+	static __wrap(e) {
+		e >>>= 0;
+		const t = Object.create(n.prototype);
+		return t.__wbg_ptr = e, ae.register(t, t.__wbg_ptr, t), t;
+	}
+	__destroy_into_raw() {
+		const n = this.__wbg_ptr;
+		return this.__wbg_ptr = 0, ae.unregister(this), n;
+	}
+	free() {
+		const n = this.__destroy_into_raw();
+		Be.__wbg_streamparseresult_free(n, 0);
+	}
+	get axisX() {
+		const n = Be.streamparseresult_axisX(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get axisY() {
+		const n = Be.streamparseresult_axisY(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get axisZ() {
+		const n = Be.streamparseresult_axisZ(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get canonicalPassDegraded() {
+		return 0 !== Be.streamparseresult_canonicalPassDegraded(this.__wbg_ptr);
+	}
+	get canonicalPassReason() {
+		const n = Be.streamparseresult_canonicalPassReason(this.__wbg_ptr);
+		let e;
+		return 0 !== n[0] && (e = ye(n[0], n[1]).slice(), Be.__wbindgen_free(n[0], 1 * n[1], 1)), e;
+	}
+	get headerRowsSkipped() {
+		return Be.streamparseresult_headerRowsSkipped(this.__wbg_ptr) >>> 0;
+	}
+	get rawRetentionDegraded() {
+		return 0 !== Be.streamparseresult_rawRetentionDegraded(this.__wbg_ptr);
+	}
+	get rowCount() {
+		return Be.streamparseresult_rowCount(this.__wbg_ptr) >>> 0;
+	}
+	get sampleFrequency() {
+		return Be.streamparseresult_sampleFrequency(this.__wbg_ptr) >>> 0;
+	}
+	get temperature() {
+		const n = Be.streamparseresult_temperature(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get timestampsMs() {
+		const n = Be.streamparseresult_timestampsMs(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+	get vectorMagnitude() {
+		const n = Be.streamparseresult_vectorMagnitude(this.__wbg_ptr);
+		var e = ge(n[0], n[1]).slice();
+		return Be.__wbindgen_free(n[0], 8 * n[1], 8), e;
+	}
+};
+function _(n, e, t) {
+	const _ = Be.actiwareSleepIntervals(n, e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function r() {
+	let n, e;
+	try {
+		const t = Be.actoursVersion();
+		return n = t[0], e = t[1], ye(t[0], t[1]);
+	} finally {
+		Be.__wbindgen_free(n, e, 1);
+	}
+}
+function i(n) {
+	const e = Be.aggregateEpochSeries(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function o(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.analyzePhysicalActivityDay(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function c(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Be.classifyActimetricPreschoolWristRf(r, i, o, c, a, s, _);
+	if (l[3]) throw Ue(l[2]);
+	var u = fe(l[0], l[1]).slice();
+	return Be.__wbindgen_free(l[0], 1 * l[1], 1), u;
+}
+function a(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Be.classifyActimetricPreschoolWristRfLagLead(r, i, o, c, a, s, _);
+	if (l[3]) throw Ue(l[2]);
+	var u = fe(l[0], l[1]).slice();
+	return Be.__wbindgen_free(l[0], 1 * l[1], 1), u;
+}
+function s(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Be.classifyActimetricPreschoolWristRfLagLeadCalibrated(r, i, o, c, a, s, _);
+	if (l[3]) throw Ue(l[2]);
+	var u = fe(l[0], l[1]).slice();
+	return Be.__wbindgen_free(l[0], 1 * l[1], 1), u;
+}
+function l(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Be.computeAnglez5s(r, i, o, c, a, s, _);
+	var u = ge(l[0], l[1]).slice();
+	return Be.__wbindgen_free(l[0], 8 * l[1], 8), u;
+}
+function u(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.computeCircadian(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function w(n, e, t, _, r, i, o) {
+	const c = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), a = Ee, s = Pe(e, Be.__wbindgen_malloc), l = Ee, u = Ce(t, Be.__wbindgen_malloc), w = Ee, g = Pe(_, Be.__wbindgen_malloc), b = Ee, f = Ce(r, Be.__wbindgen_malloc), d = Ee, m = Fe(i, Be.__wbindgen_malloc), h = Ee, p = Ce(o, Be.__wbindgen_malloc), y = Ee, v = Be.computeCircadianTyped(c, a, s, l, u, w, g, b, f, d, m, h, p, y);
+	if (v[2]) throw Ue(v[1]);
+	return Ue(v[0]);
+}
+function g(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Be.computeEnmo5s(r, i, o, c, a, s, _);
+	var u = ge(l[0], l[1]).slice();
+	return Be.__wbindgen_free(l[0], 8 * l[1], 8), u;
+}
+function b(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Be.computeMimsUnit(i, o, c, a, s, l, _, r);
+	if (u[2]) throw Ue(u[1]);
+	return Ue(u[0]);
+}
+function f(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Pe(_, Be.__wbindgen_malloc), w = Ee, g = Be.computeMimsUnitDataframe(i, o, c, a, s, l, u, w, r);
+	if (g[2]) throw Ue(g[1]);
+	return Ue(g[0]);
+}
+function d(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Be.computeMimsUnitTimingBreakdown(i, o, c, a, s, l, _, r);
+	if (u[2]) throw Ue(u[1]);
+	return Ue(u[0]);
+}
+function m(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Be.computeMimsUnitValues(i, o, c, a, s, l, _, r);
+	if (u[3]) throw Ue(u[2]);
+	var w = ge(u[0], u[1]).slice();
+	return Be.__wbindgen_free(u[0], 8 * u[1], 8), w;
+}
+function h(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.computeNightDifficulty(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function p(n, e, t, _, r, i, o, c, a, s, l, u, w, g, b, f, d, m, h) {
+	const p = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), y = Ee, v = Pe(e, Be.__wbindgen_malloc), k = Ee, A = Ce(t, Be.__wbindgen_malloc), R = Ee, S = Pe(_, Be.__wbindgen_malloc), x = Ee, C = Ce(r, Be.__wbindgen_malloc), F = Ee, P = Fe(i, Be.__wbindgen_malloc), M = Ee, U = Ce(o, Be.__wbindgen_malloc), z = Ee, W = Fe(c, Be.__wbindgen_malloc), I = Ee, O = Ce(a, Be.__wbindgen_malloc), D = Ee, B = Pe(s, Be.__wbindgen_malloc), E = Ee, T = Ce(l, Be.__wbindgen_malloc), j = Ee, N = Pe(u, Be.__wbindgen_malloc), G = Ee, L = Ce(w, Be.__wbindgen_malloc), V = Ee, X = Pe(g, Be.__wbindgen_malloc), q = Ee, H = Ce(b, Be.__wbindgen_malloc), J = Ee, $ = Pe(f, Be.__wbindgen_malloc), Y = Ee, Z = Ce(d, Be.__wbindgen_malloc), K = Ee, Q = Fe(m, Be.__wbindgen_malloc), nn = Ee, en = Ce(h, Be.__wbindgen_malloc), tn = Ee, _n = Be.computeNightDifficultyTyped(p, y, v, k, A, R, S, x, C, F, P, M, U, z, W, I, O, D, B, E, T, j, N, G, L, V, X, q, H, J, $, Y, Z, K, Q, nn, en, tn);
+	if (_n[2]) throw Ue(_n[1]);
+	return Ue(_n[0]);
+}
+function y(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.computeNightSignals(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function v(n, e, t, _, r, i, o, c, a, s, l, u, w, g, b, f, d, m, h) {
+	const p = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), y = Ee, v = Pe(e, Be.__wbindgen_malloc), k = Ee, A = Ce(t, Be.__wbindgen_malloc), R = Ee, S = Pe(_, Be.__wbindgen_malloc), x = Ee, C = Ce(r, Be.__wbindgen_malloc), F = Ee, P = Fe(i, Be.__wbindgen_malloc), M = Ee, U = Ce(o, Be.__wbindgen_malloc), z = Ee, W = Fe(c, Be.__wbindgen_malloc), I = Ee, O = Ce(a, Be.__wbindgen_malloc), D = Ee, B = Pe(s, Be.__wbindgen_malloc), E = Ee, T = Ce(l, Be.__wbindgen_malloc), j = Ee, N = Pe(u, Be.__wbindgen_malloc), G = Ee, L = Ce(w, Be.__wbindgen_malloc), V = Ee, X = Pe(g, Be.__wbindgen_malloc), q = Ee, H = Ce(b, Be.__wbindgen_malloc), J = Ee, $ = Pe(f, Be.__wbindgen_malloc), Y = Ee, Z = Ce(d, Be.__wbindgen_malloc), K = Ee, Q = Fe(m, Be.__wbindgen_malloc), nn = Ee, en = Ce(h, Be.__wbindgen_malloc), tn = Ee, _n = Be.computeNightSignalsTyped(p, y, v, k, A, R, S, x, C, F, P, M, U, z, W, I, O, D, B, E, T, j, N, G, L, V, X, q, H, J, $, Y, Z, K, Q, nn, en, tn);
+	if (_n[2]) throw Ue(_n[1]);
+	return Ue(_n[0]);
+}
+function k(n, e, t) {
+	const _ = Fe(n, Be.__wbindgen_malloc), r = Ee, i = Pe(e, Be.__wbindgen_malloc), o = Ee, c = Be.computeSleepMetrics(_, r, i, o, t);
+	if (c[2]) throw Ue(c[1]);
+	return Ue(c[0]);
+}
+function A(n) {
+	const e = Be.configureComputeMemoryBudgetV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function R(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee;
+	Be.csvBufferAppend(e, t);
+}
+function S(n) {
+	Be.csvBufferClear(n);
+}
+function x(n, e) {
+	const t = Pe(n, Be.__wbindgen_malloc), _ = Ee, r = Pe(e, Be.__wbindgen_malloc), i = Ee, o = Be.detectDetachFromAccelerationG(t, _, r, i);
+	if (o[3]) throw Ue(o[2]);
+	var c = fe(o[0], o[1]).slice();
+	return Be.__wbindgen_free(o[0], 1 * o[1], 1), c;
+}
+function C(n, e) {
+	let t, _;
+	try {
+		const r = Fe(n, Be.__wbindgen_malloc), i = Ee, o = Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), c = Ee, a = Be.detectDeviceFormat(r, i, o, c);
+		return t = a[0], _ = a[1], ye(a[0], a[1]);
+	} finally {
+		Be.__wbindgen_free(t, _, 1);
+	}
+}
+function F(n) {
+	const e = Be.detectGgirHasptVariant(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function P(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee;
+	var o = xe(e) ? 0 : Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), c = Ee, a = xe(t) ? 0 : Pe(t, Be.__wbindgen_malloc), s = Ee, l = xe(_) ? 0 : Pe(_, Be.__wbindgen_malloc), u = Ee;
+	return Be.detectHdcza(r, i, o, c, a, s, l, u);
+}
+function M(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.detectNonwear(e, t);
+	var r = fe(_[0], _[1]).slice();
+	return Be.__wbindgen_free(_[0], 1 * _[1], 1), r;
+}
+function U(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.detectNonwearChoi2011(e, t);
+	var r = fe(_[0], _[1]).slice();
+	return Be.__wbindgen_free(_[0], 1 * _[1], 1), r;
+}
+function z(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.detectNonwearChoi2011Bouts(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function W(n, e) {
+	const t = Pe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.detectNonwearChoi2011Epoch(t, _, e);
+	if (r[3]) throw Ue(r[2]);
+	var i = fe(r[0], r[1]).slice();
+	return Be.__wbindgen_free(r[0], 1 * r[1], 1), i;
+}
+function I(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.detectNonwearChoi2012(e, t);
+	var r = fe(_[0], _[1]).slice();
+	return Be.__wbindgen_free(_[0], 1 * _[1], 1), r;
+}
+function O(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.detectNonwearChoi2012Bouts(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function D(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.detectNonwearChoiBouts(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function B(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.detectNonwearUnified(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function E(n, e, t, _, r, i, o) {
+	const c = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), a = Ee, s = Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), l = Ee, u = Pe(t, Be.__wbindgen_malloc), w = Ee, g = Pe(_, Be.__wbindgen_malloc), b = Ee, f = Pe(r, Be.__wbindgen_malloc), d = Ee, m = Be.detectNonwearUnifiedBatchTyped(c, a, s, l, u, w, g, b, f, d, i, o);
+	if (m[2]) throw Ue(m[1]);
+	return Ue(m[0]);
+}
+function T(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Pe(_, Be.__wbindgen_malloc), w = Ee, g = Be.epochRawData(i, o, c, a, s, l, u, w, r);
+	if (g[2]) throw Ue(g[1]);
+	return Ue(g[0]);
+}
+function j(n, e, t) {
+	const _ = Pe(n, Be.__wbindgen_malloc), r = Ee, i = Pe(e, Be.__wbindgen_malloc), o = Ee, c = Be.epochWithBandpass(_, r, i, o, t);
+	if (c[2]) throw Ue(c[1]);
+	return Ue(c[0]);
+}
+function N(n, e) {
+	let t, _;
+	try {
+		const o = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), c = Ee, a = Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), s = Ee, l = Be.executeHeroRuntime(o, c, a, s);
+		var r = l[0], i = l[1];
+		if (l[3]) throw r = 0, i = 0, Ue(l[2]);
+		return t = r, _ = i, ye(r, i);
+	} finally {
+		Be.__wbindgen_free(t, _, 1);
+	}
+}
+function G(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.extractCapsense(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function L(n, e) {
+	const t = Be.generateActiwareRestIntervals(n, e);
+	if (t[2]) throw Ue(t[1]);
+	return Ue(t[0]);
+}
+function V() {
+	const n = Be.getComputeCapabilitiesV1();
+	if (n[2]) throw Ue(n[1]);
+	return Ue(n[0]);
+}
+function X(n) {
+	return Be.initThreadPool(n);
+}
+function q() {
+	Be.installPanicHook();
+}
+function H(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee;
+	return 0 !== Be.isGeneactivFormat(e, t);
+}
+function J(n, e, t, _) {
+	const r = Pe(n, Be.__wbindgen_malloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Be.lstmSpectralFeatures30s(r, i, o, c, a, s, _);
+	if (l[2]) throw Ue(l[1]);
+	return Ue(l[0]);
+}
+function $(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Be.neishabouriCounts(i, o, c, a, s, l, _, r);
+	if (u[2]) throw Ue(u[1]);
+	return Ue(u[0]);
+}
+function Y(n, e) {
+	const t = Fe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.parseActigraphCsv(t, _, e);
+	if (r[2]) throw Ue(r[1]);
+	return Ue(r[0]);
+}
+function Z(n) {
+	const e = Be.parseActigraphCsvBuffered(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function K(n, e, t, _) {
+	const r = Fe(n, Be.__wbindgen_malloc), i = Ee;
+	var o = xe(e) ? 0 : Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), c = Ee, a = xe(_) ? 0 : Me(_, Be.__wbindgen_malloc, Be.__wbindgen_realloc), s = Ee;
+	const l = Be.parseAw5(r, i, o, c, xe(t) ? 0 : le(t), a, s);
+	if (l[2]) throw Ue(l[1]);
+	return Ue(l[0]);
+}
+function Q(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.parseCwa(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function nn(n, e) {
+	const t = Fe(n, Be.__wbindgen_malloc), _ = Ee, r = Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), i = Ee, o = Be.parseEpochSeries(t, _, r, i);
+	if (o[2]) throw Ue(o[1]);
+	return Ue(o[0]);
+}
+function en(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.parseGeneactivBin(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function tn(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.parseGeneactivCsv(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function _n() {
+	const n = Be.parseGeneactivCsvBuffered();
+	if (n[2]) throw Ue(n[1]);
+	return Ue(n[0]);
+}
+function rn(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.parseGt3x(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function on(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.placeMarkers(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function cn(n, e, t, _, r, i) {
+	const o = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), c = Ee, a = Pe(e, Be.__wbindgen_malloc), s = Ee, l = Pe(t, Be.__wbindgen_malloc), u = Ee, w = Fe(_, Be.__wbindgen_malloc), g = Ee, b = Fe(r, Be.__wbindgen_malloc), f = Ee, d = Me(i, Be.__wbindgen_malloc, Be.__wbindgen_realloc), m = Ee, h = Be.placeMarkersBatch(o, c, a, s, l, u, w, g, b, f, d, m);
+	if (h[2]) throw Ue(h[1]);
+	return Ue(h[0]);
+}
+function an(n, e, t, _, r, i, o, c, a, s, l, u, w, g, b, f, d, m, h) {
+	const p = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), y = Ee, v = Pe(e, Be.__wbindgen_malloc), k = Ee, A = Ce(t, Be.__wbindgen_malloc), R = Ee, S = Pe(_, Be.__wbindgen_malloc), x = Ee, C = Ce(r, Be.__wbindgen_malloc), F = Ee, P = Fe(i, Be.__wbindgen_malloc), M = Ee, U = Ce(o, Be.__wbindgen_malloc), z = Ee, W = Fe(c, Be.__wbindgen_malloc), I = Ee, O = Ce(a, Be.__wbindgen_malloc), D = Ee, B = Pe(s, Be.__wbindgen_malloc), E = Ee, T = Ce(l, Be.__wbindgen_malloc), j = Ee, N = Pe(u, Be.__wbindgen_malloc), G = Ee, L = Ce(w, Be.__wbindgen_malloc), V = Ee, X = Pe(g, Be.__wbindgen_malloc), q = Ee, H = Ce(b, Be.__wbindgen_malloc), J = Ee, $ = Pe(f, Be.__wbindgen_malloc), Y = Ee, Z = Ce(d, Be.__wbindgen_malloc), K = Ee, Q = Fe(m, Be.__wbindgen_malloc), nn = Ee, en = Ce(h, Be.__wbindgen_malloc), tn = Ee, _n = Be.placeMarkersTyped(p, y, v, k, A, R, S, x, C, F, P, M, U, z, W, I, O, D, B, E, T, j, N, G, L, V, X, q, H, J, $, Y, Z, K, Q, nn, en, tn);
+	if (_n[2]) throw Ue(_n[1]);
+	return Ue(_n[0]);
+}
+function sn(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.placeNonwearMarkers(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function ln(n, e, t, _) {
+	const r = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), i = Ee, o = Pe(e, Be.__wbindgen_malloc), c = Ee, a = Pe(t, Be.__wbindgen_malloc), s = Ee, l = Fe(_, Be.__wbindgen_malloc), u = Ee, w = Be.placeNonwearMarkersTyped(r, i, o, c, a, s, l, u);
+	if (w[2]) throw Ue(w[1]);
+	return Ue(w[0]);
+}
+function un(n) {
+	const e = Be.prepareCompactPipelineOutcomeV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function wn(n) {
+	const e = Be.prepareCompactPipelineV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function gn(n, e, t, _, r, i, o) {
+	const c = Pe(n, Be.__wbindgen_malloc), a = Ee, s = Pe(e, Be.__wbindgen_malloc), l = Ee, u = Pe(t, Be.__wbindgen_malloc), w = Ee, g = Pe(_, Be.__wbindgen_malloc), b = Ee;
+	var f = xe(o) ? 0 : Me(o, Be.__wbindgen_malloc, Be.__wbindgen_realloc), d = Ee;
+	const m = Be.processGeneactivRaw(c, a, s, l, u, w, g, b, r, i, f, d);
+	if (m[2]) throw Ue(m[1]);
+	return Ue(m[0]);
+}
+function bn(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.processGt3xFull(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function fn(n, e) {
+	const t = Fe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.processGt3xFullWithEpoch(t, _, e);
+	if (r[2]) throw Ue(r[1]);
+	return Ue(r[0]);
+}
+function dn(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.processGt3xPart1(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function mn(n, e) {
+	const t = Fe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.processGt3xPart1WithEpoch(t, _, e);
+	if (r[2]) throw Ue(r[1]);
+	return Ue(r[0]);
+}
+function hn(n, e, t, _, r, i) {
+	const o = Pe(n, Be.__wbindgen_malloc), c = Ee, a = Pe(e, Be.__wbindgen_malloc), s = Ee, l = Pe(t, Be.__wbindgen_malloc), u = Ee;
+	var w = xe(i) ? 0 : Me(i, Be.__wbindgen_malloc, Be.__wbindgen_realloc), g = Ee;
+	const b = Be.processRawXyz(o, c, a, s, l, u, _, r, w, g);
+	if (b[2]) throw Ue(b[1]);
+	return Ue(b[0]);
+}
+function pn(n, e, t, _, r, i) {
+	const o = Pe(n, Be.__wbindgen_malloc), c = Ee, a = Pe(e, Be.__wbindgen_malloc), s = Ee, l = Pe(t, Be.__wbindgen_malloc), u = Ee, w = Pe(_, Be.__wbindgen_malloc), g = Ee;
+	var b = xe(i) ? 0 : Me(i, Be.__wbindgen_malloc, Be.__wbindgen_realloc), f = Ee;
+	const d = Be.processRawXyzImputed(o, c, a, s, l, u, w, g, r, b, f);
+	if (d[2]) throw Ue(d[1]);
+	return Ue(d[0]);
+}
+function yn(n, e, t, _, r, i, o) {
+	const c = Pe(n, Be.__wbindgen_malloc), a = Ee, s = Pe(e, Be.__wbindgen_malloc), l = Ee, u = Pe(t, Be.__wbindgen_malloc), w = Ee, g = Pe(_, Be.__wbindgen_malloc), b = Ee;
+	var f = xe(i) ? 0 : Me(i, Be.__wbindgen_malloc, Be.__wbindgen_realloc), d = Ee;
+	const m = Be.processRawXyzImputedWithEpoch(c, a, s, l, u, w, g, b, r, f, d, o);
+	if (m[2]) throw Ue(m[1]);
+	return Ue(m[0]);
+}
+function vn(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.readGgirMeta(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function kn() {
+	return Be.recommended_chunk_size_mb() >>> 0;
+}
+function An(n, e) {
+	const t = Pe(n, Be.__wbindgen_malloc), _ = Ee, r = Me(e, Be.__wbindgen_malloc, Be.__wbindgen_realloc), i = Ee, o = Be.reduceF64V1(t, _, r, i);
+	if (o[2]) throw Ue(o[1]);
+	return o[0];
+}
+function Rn(n) {
+	const e = Be.runCompactPipelineOutcomeV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Sn(n) {
+	const e = Be.runCompactPipelineV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function xn(n, e) {
+	const t = Be.runFullPipeline(n, e);
+	if (t[2]) throw Ue(t[1]);
+	return Ue(t[0]);
+}
+function Cn(n) {
+	const e = Be.runFullPipelineOutcomeV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Fn(n) {
+	const e = Be.runFullPipelineV1(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Pn(n, e) {
+	const t = Be.runGgirFromEpoch(n, e);
+	if (t[2]) throw Ue(t[1]);
+	return Ue(t[0]);
+}
+function Mn(n) {
+	const e = Be.runGgirPart3(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Un(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.runMilestone(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return Ue(_[0]);
+}
+function zn(n) {
+	const e = Be.scoreAllDays(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Wn(n, e) {
+	const t = Pe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.scoreColeKripke(t, _, e);
+	var i = fe(r[0], r[1]).slice();
+	return Be.__wbindgen_free(r[0], 1 * r[1], 1), i;
+}
+function In(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.scoreConsensus(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function On(n) {
+	const e = Be.scoreConsensusMajority(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Dn(n, e, t) {
+	const _ = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), r = Ee, i = Fe(e, Be.__wbindgen_malloc), o = Ee, c = Ce(t, Be.__wbindgen_malloc), a = Ee, s = Be.scoreConsensusTyped(_, r, i, o, c, a);
+	if (s[2]) throw Ue(s[1]);
+	return Ue(s[0]);
+}
+function Bn(n) {
+	let e, t;
+	try {
+		const i = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), o = Ee, c = Be.scoreEpochs(i, o);
+		var _ = c[0], r = c[1];
+		if (c[3]) throw _ = 0, r = 0, Ue(c[2]);
+		return e = _, t = r, ye(_, r);
+	} finally {
+		Be.__wbindgen_free(e, t, 1);
+	}
+}
+function En(n, e, t, _, r, i) {
+	const o = Me(n, Be.__wbindgen_malloc, Be.__wbindgen_realloc), c = Ee, a = Pe(e, Be.__wbindgen_malloc), s = Ee, l = Pe(t, Be.__wbindgen_malloc), u = Ee, w = Pe(_, Be.__wbindgen_malloc), g = Ee, b = Be.scoreEpochsTyped(o, c, a, s, l, u, w, g, r, i);
+	if (b[2]) throw Ue(b[1]);
+	return Ue(b[0]);
+}
+function Tn(n) {
+	const e = Pe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.scoreGgirHasib(e, t);
+	var r = fe(_[0], _[1]).slice();
+	return Be.__wbindgen_free(_[0], 1 * _[1], 1), r;
+}
+function jn(n) {
+	const e = Be.scoreGgirHasibVariant(n);
+	if (e[2]) throw Ue(e[1]);
+	return Ue(e[0]);
+}
+function Nn(n, e, t) {
+	const _ = Pe(n, Be.__wbindgen_malloc), r = Ee, i = Pe(e, Be.__wbindgen_malloc), o = Ee, c = Be.scoreGgirSib(_, r, i, o, t);
+	if (c[2]) throw Ue(c[1]);
+	return Ue(c[0]);
+}
+function Gn(n, e) {
+	const t = Pe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.scoreSadeh(t, _, e);
+	var i = fe(r[0], r[1]).slice();
+	return Be.__wbindgen_free(r[0], 1 * r[1], 1), i;
+}
+function Ln(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.sha256StreamFeed(e, t);
+	if (_[1]) throw Ue(_[0]);
+}
+function Vn() {
+	let n, e;
+	try {
+		const r = Be.sha256StreamFinish();
+		var t = r[0], _ = r[1];
+		if (r[3]) throw t = 0, _ = 0, Ue(r[2]);
+		return n = t, e = _, ye(t, _);
+	} finally {
+		Be.__wbindgen_free(n, e, 1);
+	}
+}
+function Xn() {
+	Be.sha256StreamStart();
+}
+function qn(n, e) {
+	const t = Be.sleepWakeScores(n, e);
+	if (t[2]) throw Ue(t[1]);
+	return Ue(t[0]);
+}
+function Hn(n) {
+	return Be.startThreadPool(n);
+}
+function Jn(n) {
+	const e = Fe(n, Be.__wbindgen_malloc), t = Ee, _ = Be.streamParseFeed(e, t);
+	if (_[2]) throw Ue(_[1]);
+	return _[0] >>> 0;
+}
+function $n() {
+	const n = Be.streamParseFinish();
+	if (n[2]) throw Ue(n[1]);
+	return t.__wrap(n[0]);
+}
+function Yn() {
+	const n = Be.streamParseFinishChunk();
+	if (n[2]) throw Ue(n[1]);
+	return e.__wrap(n[0]);
+}
+function Zn(n, e) {
+	const t = Be.streamParseStart(n, e);
+	if (t[1]) throw Ue(t[0]);
+}
+function Kn(n, e) {
+	const t = Be.streamParseStartData(n, e);
+	if (t[1]) throw Ue(t[0]);
+}
+function Qn(n, e, t) {
+	const _ = Be.streamParseStartWithEpoch(n, e, t);
+	if (_[1]) throw Ue(_[0]);
+}
+function ne(n, e) {
+	const t = Fe(n, Be.__wbindgen_malloc), _ = Ee, r = Be.summarizeActimetricPreschoolWristRfClasses(t, _, e);
+	if (r[2]) throw Ue(r[1]);
+	return Ue(r[0]);
+}
+function ee() {
+	return 0 !== Be.threadPoolReady();
+}
+Symbol.dispose && (t.prototype[Symbol.dispose] = t.prototype.free);
+var te = class n {
+	static __wrap(e) {
+		e >>>= 0;
+		const t = Object.create(n.prototype);
+		return t.__wbg_ptr = e, se.register(t, t.__wbg_ptr, t), t;
+	}
+	__destroy_into_raw() {
+		const n = this.__wbg_ptr;
+		return this.__wbg_ptr = 0, se.unregister(this), n;
+	}
+	free() {
+		const n = this.__destroy_into_raw();
+		Be.__wbg_wbg_rayon_poolbuilder_free(n, 0);
+	}
+	build() {
+		Be.wbg_rayon_poolbuilder_build(this.__wbg_ptr);
+	}
+	mainJS() {
+		return Be.wbg_rayon_poolbuilder_mainJS(this.__wbg_ptr);
+	}
+	numThreads() {
+		return Be.wbg_rayon_poolbuilder_numThreads(this.__wbg_ptr) >>> 0;
+	}
+	receiver() {
+		return Be.wbg_rayon_poolbuilder_receiver(this.__wbg_ptr) >>> 0;
+	}
+};
+function _e(n) {
+	Be.wbg_rayon_start_worker(n);
+}
+function re(n, e, t, _, r) {
+	const i = Pe(n, Be.__wbindgen_malloc), o = Ee, c = Pe(e, Be.__wbindgen_malloc), a = Ee, s = Pe(t, Be.__wbindgen_malloc), l = Ee, u = Be.zeroCrossingCounts(i, o, c, a, s, l, _, r);
+	if (u[2]) throw Ue(u[1]);
+	return Ue(u[0]);
+}
+function ie(e) {
+	return {
+		__proto__: null,
+		"./actours_bg.js": {
+			__proto__: null,
+			__wbg_Error_960c155d3d49e4c2: function(n, e) {
+				return Error(ye(n, e));
+			},
+			__wbg_Number_32bf70a599af1d4b: function(n) {
+				return Number(n);
+			},
+			__wbg_String_8564e559799eccda: function(n, e) {
+				const t = Me(String(e), Be.__wbindgen_malloc, Be.__wbindgen_realloc), _ = Ee;
+				me().setInt32(n + 4, _, !0), me().setInt32(n + 0, t, !0);
+			},
+			__wbg___wbindgen_bigint_get_as_i64_3d3aba5d616c6a51: function(n, e) {
+				const t = "bigint" == typeof e ? e : void 0;
+				me().setBigInt64(n + 8, xe(t) ? BigInt(0) : t, !0), me().setInt32(n + 0, !xe(t), !0);
+			},
+			__wbg___wbindgen_boolean_get_6ea149f0a8dcc5ff: function(n) {
+				const e = "boolean" == typeof n ? n : void 0;
+				return xe(e) ? 16777215 : e ? 1 : 0;
+			},
+			__wbg___wbindgen_debug_string_ab4b34d23d6778bd: function(n, e) {
+				const t = Me(we(e), Be.__wbindgen_malloc, Be.__wbindgen_realloc), _ = Ee;
+				me().setInt32(n + 4, _, !0), me().setInt32(n + 0, t, !0);
+			},
+			__wbg___wbindgen_in_a5d8b22e52b24dd1: function(n, e) {
+				return n in e;
+			},
+			__wbg___wbindgen_is_bigint_ec25c7f91b4d9e93: function(n) {
+				return "bigint" == typeof n;
+			},
+			__wbg___wbindgen_is_function_3baa9db1a987f47d: function(n) {
+				return "function" == typeof n;
+			},
+			__wbg___wbindgen_is_null_52ff4ec04186736f: function(n) {
+				return null === n;
+			},
+			__wbg___wbindgen_is_object_63322ec0cd6ea4ef: function(n) {
+				return "object" == typeof n && null !== n;
+			},
+			__wbg___wbindgen_is_string_6df3bf7ef1164ed3: function(n) {
+				return "string" == typeof n;
+			},
+			__wbg___wbindgen_is_undefined_29a43b4d42920abd: function(n) {
+				return void 0 === n;
+			},
+			__wbg___wbindgen_jsval_eq_d3465d8a07697228: function(n, e) {
+				return n === e;
+			},
+			__wbg___wbindgen_jsval_loose_eq_cac3565e89b4134c: function(n, e) {
+				return n == e;
+			},
+			__wbg___wbindgen_memory_dfa12096f400c9bd: function() {
+				return Be.memory;
+			},
+			__wbg___wbindgen_module_b5e6fb95dbdb7d7e: function() {
+				return De;
+			},
+			__wbg___wbindgen_number_get_c7f42aed0525c451: function(n, e) {
+				const t = "number" == typeof e ? e : void 0;
+				me().setFloat64(n + 8, xe(t) ? 0 : t, !0), me().setInt32(n + 0, !xe(t), !0);
+			},
+			__wbg___wbindgen_string_get_7ed5322991caaec5: function(n, e) {
+				const t = "string" == typeof e ? e : void 0;
+				var _ = xe(t) ? 0 : Me(t, Be.__wbindgen_malloc, Be.__wbindgen_realloc), r = Ee;
+				me().setInt32(n + 4, r, !0), me().setInt32(n + 0, _, !0);
+			},
+			__wbg___wbindgen_throw_6b64449b9b9ed33c: function(n, e) {
+				throw new Error(ye(n, e));
+			},
+			__wbg_call_14b169f759b26747: function() {
+				return Se(function(n, e) {
+					return n.call(e);
+				}, arguments);
+			},
+			__wbg_done_9158f7cc8751ba32: function(n) {
+				return n.done;
+			},
+			__wbg_entries_e0b73aa8571ddb56: function(n) {
+				return Object.entries(n);
+			},
+			__wbg_error_a6fa202b58aa1cd3: function(n, e) {
+				let t, _;
+				try {
+					t = n, _ = e, console.error(ye(n, e));
+				} finally {
+					Be.__wbindgen_free(t, _, 1);
+				}
+			},
+			__wbg_from_0dbf29f09e7fb200: function(n) {
+				return Array.from(n);
+			},
+			__wbg_get_1affdbdd5573b16a: function() {
+				return Se(function(n, e) {
+					return Reflect.get(n, e);
+				}, arguments);
+			},
+			__wbg_get_6011fa3a58f61074: function() {
+				return Se(function(n, e) {
+					return Reflect.get(n, e);
+				}, arguments);
+			},
+			__wbg_get_8360291721e2339f: function(n, e) {
+				return n[e >>> 0];
+			},
+			__wbg_get_unchecked_17f53dad852b9588: function(n, e) {
+				return n[e >>> 0];
+			},
+			__wbg_get_with_ref_key_6412cf3094599694: function(n, e) {
+				return n[e];
+			},
+			__wbg_instanceof_ArrayBuffer_7c8433c6ed14ffe3: function(n) {
+				let e;
+				try {
+					e = n instanceof ArrayBuffer;
+				} catch (t) {
+					e = !1;
+				}
+				return e;
+			},
+			__wbg_instanceof_Float64Array_aa32a9a18a521df4: function(n) {
+				let e;
+				try {
+					e = n instanceof Float64Array;
+				} catch (t) {
+					e = !1;
+				}
+				return e;
+			},
+			__wbg_instanceof_Map_1b76fd4635be43eb: function(n) {
+				let e;
+				try {
+					e = n instanceof Map;
+				} catch (t) {
+					e = !1;
+				}
+				return e;
+			},
+			__wbg_instanceof_Uint8Array_152ba1f289edcf3f: function(n) {
+				let e;
+				try {
+					e = n instanceof Uint8Array;
+				} catch (t) {
+					e = !1;
+				}
+				return e;
+			},
+			__wbg_instanceof_Window_cc64c86c8ef9e02b: function(n) {
+				let e;
+				try {
+					e = n instanceof Window;
+				} catch (t) {
+					e = !1;
+				}
+				return e;
+			},
+			__wbg_isArray_c3109d14ffc06469: function(n) {
+				return Array.isArray(n);
+			},
+			__wbg_isSafeInteger_4fc213d1989d6d2a: function(n) {
+				return Number.isSafeInteger(n);
+			},
+			__wbg_isView_39f565da64ddb4dd: function(n) {
+				return ArrayBuffer.isView(n);
+			},
+			__wbg_iterator_013bc09ec998c2a7: function() {
+				return Symbol.iterator;
+			},
+			__wbg_length_3d4ecd04bd8d22f1: function(n) {
+				return n.length;
+			},
+			__wbg_length_9f1775224cf1d815: function(n) {
+				return n.length;
+			},
+			__wbg_navigator_bc077756492232c5: function(n) {
+				return n.navigator;
+			},
+			__wbg_new_0c7403db6e782f19: function(n) {
+				return new Uint8Array(n);
+			},
+			__wbg_new_227d7c05414eb861: function() {
+				return /* @__PURE__ */ new Error();
+			},
+			__wbg_new_682678e2f47e32bc: function() {
+				return new Array();
+			},
+			__wbg_new_aa8d0fa9762c29bd: function() {
+				return /* @__PURE__ */ new Object();
+			},
+			__wbg_new_from_slice_3115b094b1002246: function(n, e) {
+				return new Float64Array(ge(n, e));
+			},
+			__wbg_new_from_slice_b5ea43e23f6008c0: function(n, e) {
+				return new Uint8Array(fe(n, e));
+			},
+			__wbg_new_with_length_5cfd777b51078805: function(n) {
+				return new Float64Array(n >>> 0);
+			},
+			__wbg_new_with_length_8c854e41ea4dae9b: function(n) {
+				return new Uint8Array(n >>> 0);
+			},
+			__wbg_next_0340c4ae324393c3: function() {
+				return Se(function(n) {
+					return n.next();
+				}, arguments);
+			},
+			__wbg_next_7646edaa39458ef7: function(n) {
+				return n.next;
+			},
+			__wbg_now_a9b7df1cbee90986: function() {
+				return Date.now();
+			},
+			__wbg_ownKeys_0231887680f0f945: function() {
+				return Se(function(n) {
+					return Reflect.ownKeys(n);
+				}, arguments);
+			},
+			__wbg_prototypesetcall_a6b02eb00b0f4ce2: function(n, e, t) {
+				Uint8Array.prototype.set.call(fe(n, e), t);
+			},
+			__wbg_push_471a5b068a5295f6: function(n, e) {
+				return n.push(e);
+			},
+			__wbg_set_022bee52d0b05b19: function() {
+				return Se(function(n, e, t) {
+					return Reflect.set(n, e, t);
+				}, arguments);
+			},
+			__wbg_set_3bf1de9fab0cd644: function(n, e, t) {
+				n[e >>> 0] = t;
+			},
+			__wbg_set_6be42768c690e380: function(n, e, t) {
+				n[e] = t;
+			},
+			__wbg_set_index_2ca12d8345f872b3: function(n, e, t) {
+				n[e >>> 0] = t;
+			},
+			__wbg_set_index_805dd976c110cd28: function(n, e, t) {
+				n[e >>> 0] = t;
+			},
+			__wbg_slice_30ddef84546fd9d0: function(n, e, t) {
+				return n.slice(e >>> 0, t >>> 0);
+			},
+			__wbg_slice_fcdcd53ca169108d: function(n, e, t) {
+				return n.slice(e >>> 0, t >>> 0);
+			},
+			__wbg_stack_3b0d974bbf31e44f: function(n, e) {
+				const t = Me(e.stack, Be.__wbindgen_malloc, Be.__wbindgen_realloc), _ = Ee;
+				me().setInt32(n + 4, _, !0), me().setInt32(n + 0, t, !0);
+			},
+			__wbg_startWorkers_622cedd0d351664e: function(e, t, _) {
+				return async function(e, t, _) {
+					if (0 === _.numThreads()) throw new Error("num_threads must be > 0.");
+					const r = {
+						type: "wasm_bindgen_worker_init",
+						module: e,
+						memory: t,
+						receiver: _.receiver(),
+						mainJS: _.mainJS()
+					};
+					await Promise.all(Array.from({ length: _.numThreads() }, async () => {
+						let e = await fetch(import.meta.url).then((n) => n.blob()), t = URL.createObjectURL(e);
+						const _ = new Worker(t, { type: "module" });
+						return _.postMessage(r), await n(_, "wasm_bindgen_worker_ready"), URL.revokeObjectURL(t), _;
+					})), _.build();
+				}(e, t, te.__wrap(_));
+			},
+			__wbg_static_accessor_GLOBAL_8cfadc87a297ca02: function() {
+				const n = "undefined" == typeof global ? null : global;
+				return xe(n) ? 0 : le(n);
+			},
+			__wbg_static_accessor_GLOBAL_THIS_602256ae5c8f42cf: function() {
+				const n = "undefined" == typeof globalThis ? null : globalThis;
+				return xe(n) ? 0 : le(n);
+			},
+			__wbg_static_accessor_SELF_e445c1c7484aecc3: function() {
+				const n = "undefined" == typeof self ? null : self;
+				return xe(n) ? 0 : le(n);
+			},
+			__wbg_static_accessor_URL_151cb8815849ce83: function() {
+				return import.meta.url;
+			},
+			__wbg_static_accessor_WINDOW_f20e8576ef1e0f17: function() {
+				const n = "undefined" == typeof window ? null : window;
+				return xe(n) ? 0 : le(n);
+			},
+			__wbg_then_6701bb8428537e07: function(n, e) {
+				return n.then(e);
+			},
+			__wbg_value_ee3a06f4579184fa: function(n) {
+				return n.value;
+			},
+			__wbindgen_cast_0000000000000001: function(n, e) {
+				return function(n, e, t) {
+					const _ = {
+						a: n,
+						b: e,
+						cnt: 1
+					}, r = (...n) => {
+						_.cnt++;
+						const e = _.a;
+						_.a = 0;
+						try {
+							return t(e, _.b, ...n);
+						} finally {
+							_.a = e, r._wbg_cb_unref();
+						}
+					};
+					return r._wbg_cb_unref = () => {
+						0 === --_.cnt && (Be.__wbindgen_destroy_closure(_.a, _.b), _.a = 0, ue.unregister(_));
+					}, ue.register(r, _, _), r;
+				}(n, e, oe);
+			},
+			__wbindgen_cast_0000000000000002: function(n) {
+				return n;
+			},
+			__wbindgen_cast_0000000000000003: function(n) {
+				return n;
+			},
+			__wbindgen_cast_0000000000000004: function(n, e) {
+				return fe(n, e);
+			},
+			__wbindgen_cast_0000000000000005: function(n, e) {
+				return ye(n, e);
+			},
+			__wbindgen_cast_0000000000000006: function(n) {
+				return BigInt.asUintN(64, n);
+			},
+			__wbindgen_init_externref_table: function() {
+				const n = Be.__wbindgen_externrefs, e = n.grow(4);
+				n.set(0, void 0), n.set(e + 0, void 0), n.set(e + 1, null), n.set(e + 2, !0), n.set(e + 3, !1);
+			},
+			memory: e || new WebAssembly.Memory({
+				initial: 179,
+				maximum: 65536,
+				shared: !0
+			})
+		}
+	};
+}
+function oe(n, e, t) {
+	Be.wasm_bindgen_bf9b4c07088de8fe___convert__closures_____invoke___wasm_bindgen_bf9b4c07088de8fe___JsValue______true_(n, e, t);
+}
+Symbol.dispose && (te.prototype[Symbol.dispose] = te.prototype.free);
+const ce = "undefined" == typeof FinalizationRegistry ? {
+	register: () => {},
+	unregister: () => {}
+} : new FinalizationRegistry((n) => Be.__wbg_streamchunkresult_free(n >>> 0, 1)), ae = "undefined" == typeof FinalizationRegistry ? {
+	register: () => {},
+	unregister: () => {}
+} : new FinalizationRegistry((n) => Be.__wbg_streamparseresult_free(n >>> 0, 1)), se = "undefined" == typeof FinalizationRegistry ? {
+	register: () => {},
+	unregister: () => {}
+} : new FinalizationRegistry((n) => Be.__wbg_wbg_rayon_poolbuilder_free(n >>> 0, 1));
+function le(n) {
+	const e = Be.__externref_table_alloc();
+	return Be.__wbindgen_externrefs.set(e, n), e;
+}
+const ue = "undefined" == typeof FinalizationRegistry ? {
+	register: () => {},
+	unregister: () => {}
+} : new FinalizationRegistry((n) => Be.__wbindgen_destroy_closure(n.a, n.b));
+function we(n) {
+	const e = typeof n;
+	if ("number" == e || "boolean" == e || null == n) return `${n}`;
+	if ("string" == e) return `"${n}"`;
+	if ("symbol" == e) {
+		const e = n.description;
+		return null == e ? "Symbol" : `Symbol(${e})`;
+	}
+	if ("function" == e) {
+		const e = n.name;
+		return "string" == typeof e && e.length > 0 ? `Function(${e})` : "Function";
+	}
+	if (Array.isArray(n)) {
+		const e = n.length;
+		let t = "[";
+		e > 0 && (t += we(n[0]));
+		for (let _ = 1; _ < e; _++) t += ", " + we(n[_]);
+		return t += "]", t;
+	}
+	const t = /\[object ([^\]]+)\]/.exec(toString.call(n));
+	let _;
+	if (!(t && t.length > 1)) return toString.call(n);
+	if (_ = t[1], "Object" == _) try {
+		return "Object(" + JSON.stringify(n) + ")";
+	} catch (r) {
+		return "Object";
+	}
+	return n instanceof Error ? `${n.name}: ${n.message}\n${n.stack}` : _;
+}
+function ge(n, e) {
+	return n >>>= 0, pe().subarray(n / 8, n / 8 + e);
+}
+function be(n, e) {
+	return n >>>= 0, ke().subarray(n / 4, n / 4 + e);
+}
+function fe(n, e) {
+	return n >>>= 0, Re().subarray(n / 1, n / 1 + e);
+}
+let de = null;
+function me() {
+	return null !== de && de.buffer === Be.memory.buffer || (de = new DataView(Be.memory.buffer)), de;
+}
+let he = null;
+function pe() {
+	return null !== he && he.buffer === Be.memory.buffer || (he = new Float64Array(Be.memory.buffer)), he;
+}
+function ye(n, e) {
+	return function(n, e) {
+		return Ie += e, Ie >= We && (ze = new TextDecoder("utf-8", {
+			ignoreBOM: !0,
+			fatal: !0
+		}), ze.decode(), Ie = e), ze.decode(Re().slice(n, n + e));
+	}(n >>>= 0, e);
+}
+let ve = null;
+function ke() {
+	return null !== ve && ve.buffer === Be.memory.buffer || (ve = new Uint32Array(Be.memory.buffer)), ve;
+}
+let Ae = null;
+function Re() {
+	return null !== Ae && Ae.buffer === Be.memory.buffer || (Ae = new Uint8Array(Be.memory.buffer)), Ae;
+}
+function Se(n, e) {
+	try {
+		return n.apply(this, e);
+	} catch (t) {
+		const n = le(t);
+		Be.__wbindgen_exn_store(n);
+	}
+}
+function xe(n) {
+	return null == n;
+}
+function Ce(n, e) {
+	const t = e(4 * n.length, 4) >>> 0;
+	return ke().set(n, t / 4), Ee = n.length, t;
+}
+function Fe(n, e) {
+	const t = e(1 * n.length, 1) >>> 0;
+	return Re().set(n, t / 1), Ee = n.length, t;
+}
+function Pe(n, e) {
+	const t = e(8 * n.length, 8) >>> 0;
+	return pe().set(n, t / 8), Ee = n.length, t;
+}
+function Me(n, e, t) {
+	if (void 0 === t) {
+		const t = Oe.encode(n), _ = e(t.length, 1) >>> 0;
+		return Re().subarray(_, _ + t.length).set(t), Ee = t.length, _;
+	}
+	let _ = n.length, r = e(_, 1) >>> 0;
+	const i = Re();
+	let o = 0;
+	for (; o < _; o++) {
+		const e = n.charCodeAt(o);
+		if (e > 127) break;
+		i[r + o] = e;
+	}
+	if (o !== _) {
+		0 !== o && (n = n.slice(o)), r = t(r, _, _ = o + 3 * n.length, 1) >>> 0;
+		const e = Re().subarray(r + o, r + _);
+		o += Oe.encodeInto(n, e).written, r = t(r, _, o, 1) >>> 0;
+	}
+	return Ee = o, r;
+}
+function Ue(n) {
+	const e = Be.__wbindgen_externrefs.get(n);
+	return Be.__externref_table_dealloc(n), e;
+}
+let ze = "undefined" != typeof TextDecoder ? new TextDecoder("utf-8", {
+	ignoreBOM: !0,
+	fatal: !0
+}) : void 0;
+ze && ze.decode();
+const We = 2146435072;
+let Ie = 0;
+const Oe = "undefined" != typeof TextEncoder ? new TextEncoder() : void 0;
+Oe && (Oe.encodeInto = function(n, e) {
+	const t = Oe.encode(n);
+	return e.set(t), {
+		read: n.length,
+		written: t.length
+	};
+});
+let De, Be, Ee = 0;
+function Te(n, e, t) {
+	if (Be = n.exports, De = e, de = null, he = null, ve = null, Ae = null, void 0 !== t && ("number" != typeof t || 0 === t || t % 65536 != 0)) throw new Error("invalid stack size");
+	return Be.__wbindgen_start(t), Be;
+}
+function je(n, e) {
+	if (void 0 !== Be) return Be;
+	let t;
+	void 0 !== n && (Object.getPrototypeOf(n) === Object.prototype ? {module: n, memory: e, thread_stack_size: t} = n : console.warn("using deprecated parameters for `initSync()`; pass a single object instead"));
+	const _ = ie(e);
+	return n instanceof WebAssembly.Module || (n = new WebAssembly.Module(n)), Te(new WebAssembly.Instance(n, _), n, t);
+}
+async function Ne(n, e) {
+	if (void 0 !== Be) return Be;
+	let t;
+	void 0 !== n && (Object.getPrototypeOf(n) === Object.prototype ? {module_or_path: n, memory: e, thread_stack_size: t} = n : console.warn("using deprecated parameters for the initialization function; pass a single object instead")), void 0 === n && (n = new URL("/sleep-scoring-wasm/assets/actours_threads_bg-Cf2Peg3u.wasm", "" + import.meta.url));
+	const _ = ie(e);
+	("string" == typeof n || "function" == typeof Request && n instanceof Request || "function" == typeof URL && n instanceof URL) && (n = fetch(n));
+	const { instance: r, module: i } = await async function(n, e) {
+		if ("function" == typeof Response && n instanceof Response) {
+			if ("function" == typeof WebAssembly.instantiateStreaming) try {
+				return await WebAssembly.instantiateStreaming(n, e);
+			} catch (t) {
+				if (!n.ok || !function(n) {
+					switch (n) {
+						case "basic":
+						case "cors":
+						case "default": return !0;
+					}
+					return !1;
+				}(n.type) || "application/wasm" === n.headers.get("Content-Type")) throw t;
+				console.warn("`WebAssembly.instantiateStreaming` failed because your server does not serve Wasm with `application/wasm` MIME type. Falling back to `WebAssembly.instantiate` which is slower. Original error:\n", t);
+			}
+			const _ = await n.arrayBuffer();
+			return await WebAssembly.instantiate(_, e);
+		}
+		{
+			const t = await WebAssembly.instantiate(n, e);
+			return t instanceof WebAssembly.Instance ? {
+				instance: t,
+				module: n
+			} : t;
+		}
+	}(await n, _);
+	return Te(r, i, t);
+}
+export { e as StreamChunkResult, t as StreamParseResult, _ as actiwareSleepIntervals, r as actoursVersion, i as aggregateEpochSeries, o as analyzePhysicalActivityDay, c as classifyActimetricPreschoolWristRf, a as classifyActimetricPreschoolWristRfLagLead, s as classifyActimetricPreschoolWristRfLagLeadCalibrated, l as computeAnglez5s, u as computeCircadian, w as computeCircadianTyped, g as computeEnmo5s, b as computeMimsUnit, f as computeMimsUnitDataframe, d as computeMimsUnitTimingBreakdown, m as computeMimsUnitValues, h as computeNightDifficulty, p as computeNightDifficultyTyped, y as computeNightSignals, v as computeNightSignalsTyped, k as computeSleepMetrics, A as configureComputeMemoryBudgetV1, R as csvBufferAppend, S as csvBufferClear, Ne as default, x as detectDetachFromAccelerationG, C as detectDeviceFormat, F as detectGgirHasptVariant, P as detectHdcza, M as detectNonwear, U as detectNonwearChoi2011, z as detectNonwearChoi2011Bouts, W as detectNonwearChoi2011Epoch, I as detectNonwearChoi2012, O as detectNonwearChoi2012Bouts, D as detectNonwearChoiBouts, B as detectNonwearUnified, E as detectNonwearUnifiedBatchTyped, T as epochRawData, j as epochWithBandpass, N as executeHeroRuntime, G as extractCapsense, L as generateActiwareRestIntervals, V as getComputeCapabilitiesV1, je as initSync, X as initThreadPool, q as installPanicHook, H as isGeneactivFormat, J as lstmSpectralFeatures30s, $ as neishabouriCounts, Y as parseActigraphCsv, Z as parseActigraphCsvBuffered, K as parseAw5, Q as parseCwa, nn as parseEpochSeries, en as parseGeneactivBin, tn as parseGeneactivCsv, _n as parseGeneactivCsvBuffered, rn as parseGt3x, on as placeMarkers, cn as placeMarkersBatch, an as placeMarkersTyped, sn as placeNonwearMarkers, ln as placeNonwearMarkersTyped, un as prepareCompactPipelineOutcomeV1, wn as prepareCompactPipelineV1, gn as processGeneactivRaw, bn as processGt3xFull, fn as processGt3xFullWithEpoch, dn as processGt3xPart1, mn as processGt3xPart1WithEpoch, hn as processRawXyz, pn as processRawXyzImputed, yn as processRawXyzImputedWithEpoch, vn as readGgirMeta, kn as recommended_chunk_size_mb, An as reduceF64V1, Rn as runCompactPipelineOutcomeV1, Sn as runCompactPipelineV1, xn as runFullPipeline, Cn as runFullPipelineOutcomeV1, Fn as runFullPipelineV1, Pn as runGgirFromEpoch, Mn as runGgirPart3, Un as runMilestone, zn as scoreAllDays, Wn as scoreColeKripke, In as scoreConsensus, On as scoreConsensusMajority, Dn as scoreConsensusTyped, Bn as scoreEpochs, En as scoreEpochsTyped, Tn as scoreGgirHasib, jn as scoreGgirHasibVariant, Nn as scoreGgirSib, Gn as scoreSadeh, Ln as sha256StreamFeed, Vn as sha256StreamFinish, Xn as sha256StreamStart, qn as sleepWakeScores, Hn as startThreadPool, Jn as streamParseFeed, $n as streamParseFinish, Yn as streamParseFinishChunk, Zn as streamParseStart, Kn as streamParseStartData, Qn as streamParseStartWithEpoch, ne as summarizeActimetricPreschoolWristRfClasses, ee as threadPoolReady, te as wbg_rayon_PoolBuilder, _e as wbg_rayon_start_worker, re as zeroCrossingCounts };
