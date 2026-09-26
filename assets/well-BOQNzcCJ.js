@@ -1,0 +1,1 @@
+import{a as r}from"./rolldown-runtime-BEU_UCik.js";import{ar as a,nr as s}from"./vendor-D761c0zR.js";import{n as o}from"./button-D-zj194M.js";a();var e=s();function t({as:r,className:a,...s}){return(0,e.jsx)(r??"div",{"data-surface":"well",className:o("rounded-lg bg-surface-well",a),...s})}export{t};
