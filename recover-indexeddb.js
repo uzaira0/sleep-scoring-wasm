@@ -233,9 +233,10 @@
     log("Scan complete. Databases captured: " + databases.length);
   }
 
-  function downloadDump() {
-    if (!dumpCache) return;
-    var json = JSON.stringify(dumpCache);
+  function downloadDump(payload) {
+    var data = payload && payload.kind ? payload : dumpCache;
+    if (!data) return;
+    var json = JSON.stringify(data);
     var blob = new Blob([json], { type: "application/json" });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -247,36 +248,77 @@
     log("Recovery JSON downloaded.");
   }
 
-  async function restoreDatabase(dbDump) {
-    await deleteDb(dbDump.name);
-    var db = await openDb(dbDump.name, dbDump.version || 1, function (upgradeDb) {
+  function validateDatabaseDump(dbDump) {
+    if (!dbDump || typeof dbDump.name !== "string" || !/^SleepScoring/.test(dbDump.name)) {
+      throw new Error("Recovery only accepts SleepScoring database names.");
+    }
+    if (!Array.isArray(dbDump.schema) || !dbDump.stores || !Number.isSafeInteger(dbDump.version) || dbDump.version < 1) {
+      throw new Error("Invalid recovery database schema.");
+    }
+    var names = new Set();
+    dbDump.schema.forEach(function (store) {
+      if (!store || typeof store.name !== "string" || names.has(store.name) || !Array.isArray(store.indexes)) {
+        throw new Error("Invalid recovery object store schema.");
+      }
+      names.add(store.name);
+    });
+    var decoded = {};
+    Object.keys(dbDump.stores).forEach(function (name) {
+      if (!names.has(name) || !Array.isArray(dbDump.stores[name])) throw new Error("Invalid recovery object store rows.");
+      decoded[name] = dbDump.stores[name].map(decodeValue);
+    });
+    return decoded;
+  }
+
+  async function writeRecoveryDatabase(name, dbDump, decoded) {
+    var db = await openDb(name, dbDump.version, function (upgradeDb) {
       dbDump.schema.forEach(function (storeSchema) {
         var store = upgradeDb.createObjectStore(storeSchema.name, {
-          keyPath: storeSchema.keyPath,
-          autoIncrement: !!storeSchema.autoIncrement,
+          keyPath: storeSchema.keyPath, autoIncrement: !!storeSchema.autoIncrement,
         });
         storeSchema.indexes.forEach(function (indexSchema) {
-          store.createIndex(indexSchema.name, indexSchema.keyPath, {
-            unique: !!indexSchema.unique,
-            multiEntry: !!indexSchema.multiEntry,
-          });
+          store.createIndex(indexSchema.name, indexSchema.keyPath, { unique: !!indexSchema.unique, multiEntry: !!indexSchema.multiEntry });
         });
       });
     });
     try {
-      var storeNames = Object.keys(dbDump.stores);
+      var storeNames = Object.keys(decoded);
       if (storeNames.length === 0) return;
       var tx = db.transaction(storeNames, "readwrite");
-      storeNames.forEach(function (storeName) {
-        var store = tx.objectStore(storeName);
-        dbDump.stores[storeName].forEach(function (encodedRow) {
-          store.put(decodeValue(encodedRow));
-        });
-      });
-      await txDone(tx);
-    } finally {
-      db.close();
+      var done = txDone(tx);
+      try {
+        storeNames.forEach(function (name) { decoded[name].forEach(function (row) { tx.objectStore(name).put(row); }); });
+      } catch (err) {
+        tx.abort();
+        await done.catch(function () {});
+        throw err;
+      }
+      await done;
+    } finally { db.close(); }
+  }
+
+  async function restoreDatabase(dbDump, decoded) {
+    decoded = decoded || validateDatabaseDump(dbDump);
+    var stagingName = "SleepScoringRecovery-" + crypto.randomUUID();
+    try {
+      await writeRecoveryDatabase(stagingName, dbDump, decoded);
+    } catch (err) {
+      await deleteDb(stagingName);
+      throw err;
     }
+    // Keep the existing contents in a downloaded recovery JSON before replacement.
+    // A failed final copy leaves the validated staging database available to Scan.
+    try {
+      var existing = await dumpDatabase({ name: dbDump.name });
+      downloadDump({ kind: "sleep-scoring-indexeddb-recovery", formatVersion: 1, origin: window.location.origin,
+        databases: [existing], storage: await dumpStorage() });
+      await deleteDb(dbDump.name);
+      await writeRecoveryDatabase(dbDump.name, dbDump, decoded);
+    } catch (err) {
+      log("Replacement failed. The prior database was downloaded; the validated recovery copy remains available to Scan.");
+      throw err;
+    }
+    await deleteDb(stagingName);
   }
 
   async function importDump() {
@@ -284,6 +326,8 @@
     if (importPayload.kind !== "sleep-scoring-indexeddb-recovery") {
       throw new Error("This is not a Sleep Scoring recovery JSON file.");
     }
+    if (!Array.isArray(importPayload.databases)) throw new Error("Invalid recovery database list.");
+    var decodedDatabases = importPayload.databases.map(validateDatabaseDump);
     var ok = window.confirm(
       "This will delete and recreate matching SleepScoring IndexedDB databases in " +
       window.location.origin +
@@ -295,7 +339,7 @@
     for (var i = 0; i < importPayload.databases.length; i += 1) {
       var dbDump = importPayload.databases[i];
       log("Restoring " + dbDump.name);
-      await restoreDatabase(dbDump);
+      await restoreDatabase(dbDump, decodedDatabases[i]);
     }
 
     ["localStorage", "sessionStorage"].forEach(function (kind) {

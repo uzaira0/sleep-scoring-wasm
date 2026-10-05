@@ -1,0 +1,1 @@
+import{l as n}from"./store-38J9x_Sc.js";import{n as s,t}from"./mask-filename-CYMRd513.js";function e(){const s=n(n=>n.hideFilenames);return(n,e)=>s?t(n,e):n}function o(){const t=n(n=>n.hideFilenames);return n=>t?s(n):n||"—"}export{o as n,e as t};

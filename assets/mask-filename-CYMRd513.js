@@ -1,0 +1,1 @@
+function t(t,e){return void 0!==e&&t?`File ${n(t)}`:"File ••••••"}function n(t){return function(t){let n=2166136261;for(let e=0;e<t.length;e++)n^=t.charCodeAt(e),n=Math.imul(n,16777619)>>>0;return n}(t).toString(36).toUpperCase().padStart(7,"0").slice(-4)}function e(t){return t?`ID ${n(t)}`:"—"}export{e as n,t};
