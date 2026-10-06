@@ -20,7 +20,10 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/sleep-scoring-wasm/icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/sleep-scoring-wasm/icon-512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/sleep-scoring-wasm/apple-touch-icon.png" />
-    <meta name="theme-color" content="#1e40af" />
+    <!-- Browser chrome / PWA title bar = the page ground (--surface-page in
+         src/index.css), per OS scheme. src/theme-color-meta.test.ts pins it. -->
+    <meta name="theme-color" content="#e9edeb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101513" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
     <!-- Stamps data-eq-theme on <html> BEFORE first paint (ThemeProvider only
          does it from an effect), so a dark-mode user does not get a white page
@@ -42,52 +45,57 @@
          the same hashed assets the stylesheet resolves to. -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/sleep-scoring-wasm/assets/atkinson-hyperlegible-latin-400-normal-BrHNak5F.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/sleep-scoring-wasm/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2" />
-    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-DGESvOKp.js" integrity="sha384-+gKKyfBCNvQ9IYdz7WIQW2V8q2A6UCp2VyytScg/pN/c6k1kZfzzoqDchpzb6up/"></script>
+    <script type="module" crossorigin src="/sleep-scoring-wasm/assets/index-B6_dUvpj.js" integrity="sha384-0czwLpf/lGls9qQGSmykSvELPdijO/HSsAqcwmMP4uQC97Xtk5A8Up3oxgyyHroO"></script>
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/rolldown-runtime-BEU_UCik.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/vendor-B71I8afM.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dexie-CLyyYR9D.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/vendor-RziUCnrN.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dexie-CbD_Y2eT.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/file-types-D0cWZwk8.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schema-B-GB7bFQ.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/schema-B0_UFpTV.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/generated-constants-TlB8Wh8u.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workers-BJLlRWlj.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workers-CEBj3qxj.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/content-hash-eh-aRBqD.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/updater-DDm9mB8U.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workspace-db-BYya4yMo.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/updater-DeYWJItd.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/workspace-db-CLQIaHSe.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/constants-6_l0eacw.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/settings-registry-BSXrfdEO.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-instrument-mapping-Cq--a9pk.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/project-revision-qCPSbMir.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-replication-profile-D0N2LR6p.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/column-mapping-presets-DZcSMiYR.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/preset-families-Bp_6lcxM.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/audit-hash-DaTJafIk.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-local-import-contract-CLbapgyV.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/audit-events-562scYbb.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/wal-DFHdG9dD.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/project-revision-s8mpZB95.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/wal-DfjrHODA.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/pre-migration-backup-BxPp6pCN.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/persistent-storage-BhhkhyHX.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/per-source-defaults-DsP4iqhT.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/local-processing-options-B7F7MBxs.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/store-38J9x_Sc.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/query-options-CzHRT71m.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/theme-provider-3BizSghx.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/button-CjQKZadO.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/ggir-results-recompute-DTU84-Ep.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/placement-Dck0qtaL.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/zod-Cn_dmY2X.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/local-analysis-D29Nskqb.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-AiIIgbtG.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-repair-queue-DQey1e_H.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dialog-ITuWjrnB.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/store-CyhYDEu9.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/query-options-BkFFd8xv.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/theme-provider-Sv4FLNut.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/button-DvechPUe.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/ggir-results-recompute-6unkCgQ8.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/placement-CWjxDWbX.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/zod-C4TSG9Fa.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/physical-activity-mask-BmGwF-g1.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/local-analysis-CnijwJxN.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/local-provenance-DdS3nGzr.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-yIVFpGjc.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-source-adapter-P6uBwCkd.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/diary-repair-queue-BaCoCa6V.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/dialog-DJ8E_On-.js">
     <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/mask-filename-CYMRd513.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/useDisplayFilename-BwNAyQiB.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/local-processing-progress-D-3JGfMh.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/staged-diary-import-DYibFpIX.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/marker-provenance-BRCTmdCU.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/scoped-scoring-settings-BvIBwhmF.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/useLocalFile-1UYGxtZx.js">
-    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-context-C95F0wgz.js">
-    <link rel="stylesheet" crossorigin href="/sleep-scoring-wasm/assets/index-ln1HcNqW.css" integrity="sha384-DOI6LKkAM6AB4Y3r0/QAPdG1uTErTIpwA3evvv4fhAzb1OT2Rm5JdegwKJjKRHux">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/useDisplayFilename-e8OB6nnL.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/local-processing-progress-Dmpr611H.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/staged-diary-import-BsL7ju7o.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/marker-provenance-vBm7WBuO.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/scoped-scoring-settings-D7sdq6pE.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/useLocalFile-DQbHvmXk.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/data-source-context-DsxWMsHt.js">
+    <link rel="modulepreload" crossorigin href="/sleep-scoring-wasm/assets/inline-confirm-Di3COWAy.js">
+    <link rel="stylesheet" crossorigin href="/sleep-scoring-wasm/assets/index-DzoGktC9.css" integrity="sha384-QErYY3qqJ/sBrAth1nlneSxuFPMj7h2GbjDPL/zc/U+Ehz2POO4AeNn2wLCrRqUs">
   </head>
   <body>
     <div id="root"></div>
-    <script src="/sleep-scoring-wasm/config.js"></script>
+    <script src="/sleep-scoring-wasm/config.js" integrity="sha384-8Nv6KfFA8Ogc6dIeIw1ny72+jxjIs+8/s8DXk/U9ffJa0vi6TGWtRRNf46EEQqCy" crossorigin="anonymous"></script>
     <script src="/sleep-scoring-wasm/partial-import-sentinel.js" integrity="sha384-QrY9SxKAfb5ULqWXnf2tXLlbo6XPdVWKLJqVFM0E8e6/LaliBsf/kjduDfz2Fmu8" crossorigin="anonymous"></script>
   </body>
 </html>

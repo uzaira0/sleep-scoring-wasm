@@ -1,0 +1,45 @@
+LSTM sleep/wake model weights (assets/*.onnx): licence and dataset attribution
+Source of truth: frontend/src/assets/models/README.md ("Licence and attribution").
+
+WEIGHTS LICENCE
+
+The model weights shipped with this app (lstm_sleep_wake, teacher_* and
+student_* .onnx files) are part of this application and are distributed under
+its licence, the GNU Affero General Public License v3.0 (AGPL-3.0; see
+LICENSE.txt). They were trained on, or distilled from models trained on,
+spectral features derived from the three public datasets below. The datasets
+themselves are not redistributed.
+
+TRAINING DATA ATTRIBUTION
+
+1. Newcastle
+   van Hees, V., Charman, S., & Anderson, K. (2018).
+   Newcastle polysomnography and accelerometer data (version 1.0). Zenodo.
+   https://doi.org/10.5281/zenodo.1160410
+   Licence: Creative Commons Attribution 4.0 International (CC BY 4.0),
+   https://creativecommons.org/licenses/by/4.0/
+
+2. Walch
+   Walch, O. (2019).
+   Motion and heart rate from a wrist-worn wearable and labeled sleep from polysomnography
+   (version 1.0.0). PhysioNet.
+   https://doi.org/10.13026/hmhs-py35
+   Licence: Open Data Commons Attribution License v1.0 (ODC-By 1.0),
+   https://opendatacommons.org/licenses/by/1-0/
+
+3. BIDSleep
+   Song, T. (2026).
+   A Multi-Night Instantaneous Heart Rate and Accelerometry Dataset with EEG Sleep Stage Labels
+   (version 1.0.0). PhysioNet.
+   https://doi.org/10.13026/a0sy-7t69
+   Licence: Open Data Commons Attribution License v1.0 (ODC-By 1.0),
+   https://opendatacommons.org/licenses/by/1-0/
+
+PhysioNet: Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C.,
+Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and
+PhysioNet: Components of a new research resource for complex physiologic
+signals. Circulation, 101(23), e215-e220.
+
+Changes: the recordings were converted to 30-second spectral features of
+x, y, z and vector magnitude, and the networks were trained on those features.
+No original recording is included in this app.

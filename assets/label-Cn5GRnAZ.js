@@ -1,0 +1,1 @@
+import{a}from"./rolldown-runtime-BEU_UCik.js";import{ar as e,cr as r}from"./vendor-RziUCnrN.js";import{n as o}from"./button-DvechPUe.js";var s=a(r(),1),l=e(),m=s.forwardRef(({className:a,...e},r)=>(0,l.jsx)("label",{ref:r,className:o("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",a),...e}));m.displayName="Label";export{m as t};

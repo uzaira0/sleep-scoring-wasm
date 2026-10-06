@@ -233,11 +233,37 @@
     log("Scan complete. Databases captured: " + databases.length);
   }
 
+  // JSON text of `value` as Blob parts, split down to `depth` levels, so the
+  // whole dump is never ONE string: V8 caps a string at ~512 Mi characters and
+  // a large workspace's base64 activity days pass that. Depth 5 reaches one
+  // part per row (dump > databases > database > stores > rows). Concatenated,
+  // the parts equal JSON.stringify(value).
+  function jsonParts(value, depth, parts) {
+    if (depth === 0 || value === null || typeof value !== "object") {
+      parts.push(JSON.stringify(value));
+      return parts;
+    }
+    var isArray = Array.isArray(value);
+    var first = true;
+    parts.push(isArray ? "[" : "{");
+    (isArray ? value : Object.keys(value)).forEach(function (item, i) {
+      var key = isArray ? i : item;
+      var child = value[key];
+      if (isArray && (child === undefined || typeof child === "function")) child = null;
+      if (child === undefined || typeof child === "function") return;
+      if (!first) parts.push(",");
+      first = false;
+      if (!isArray) parts.push(JSON.stringify(key) + ":");
+      jsonParts(child, depth - 1, parts);
+    });
+    parts.push(isArray ? "]" : "}");
+    return parts;
+  }
+
   function downloadDump(payload) {
     var data = payload && payload.kind ? payload : dumpCache;
     if (!data) return;
-    var json = JSON.stringify(data);
-    var blob = new Blob([json], { type: "application/json" });
+    var blob = new Blob(jsonParts(data, 5, []), { type: "application/json" });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "sleep-scoring-idb-recovery-" + new Date().toISOString().replace(/[:.]/g, "-") + ".json";
@@ -358,7 +384,13 @@
   scanButton.addEventListener("click", function () {
     scan().catch(function (err) { log("Scan failed: " + (err instanceof Error ? err.message : String(err))); });
   });
-  exportButton.addEventListener("click", downloadDump);
+  exportButton.addEventListener("click", function () {
+    try {
+      downloadDump();
+    } catch (err) {
+      log("Export failed: " + (err instanceof Error ? err.message : String(err)));
+    }
+  });
   importFile.addEventListener("change", function () {
     importPayload = null;
     importButton.disabled = true;

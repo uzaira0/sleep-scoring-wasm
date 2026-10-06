@@ -1,0 +1,1 @@
+function e(){return"function"==typeof globalThis.matchMedia&&globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches}export{e as t};
