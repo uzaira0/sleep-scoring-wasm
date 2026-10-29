@@ -1,0 +1,86 @@
+import { o as e } from "./schema-C65z93SA.js";
+import { r as t } from "./audit-events-Db1w7ukh.js";
+function n(e) {
+	const t = /* @__PURE__ */ new Map();
+	for (const n of e) {
+		const e = void 0 === n.studyId ? "legacy-undefined" : null === n.studyId ? "default-null" : `study-${String(n.studyId)}`, a = JSON.stringify([
+			e,
+			n.username,
+			n.fileId,
+			n.analysisDate
+		]);
+		let o = t.get(a);
+		o || (o = [], t.set(a, o)), o.push(n);
+	}
+	return t;
+}
+async function a(e, n, a) {
+	const o = a[0];
+	if (!o) return 0;
+	const r = /* @__PURE__ */ new Set(), s = [];
+	for (const i of a) {
+		const e = Number.isFinite(i.clientTimestamp) && i.clientTimestamp > 0 ? i.clientTimestamp : Date.now() / 1e3, n = t(i, e);
+		r.has(n.id) || (r.add(n.id), s.push(n));
+	}
+	if (0 === s.length) return 0;
+	try {
+		const t = await fetch(`${e}/api/v1/audit/log`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-Username": o.username || "anonymous",
+				..."number" == typeof o.studyId ? { "X-Study-Id": String(o.studyId) } : {},
+				...n.sitePassword ? { "X-Site-Password": n.sitePassword } : {}
+			},
+			body: JSON.stringify({
+				file_id: o.fileId,
+				analysis_date: o.analysisDate,
+				events: s
+			})
+		});
+		return t.ok ? ((await t.json()).acknowledged_event_ids ?? []).length : 0;
+	} catch {
+		return 0;
+	}
+}
+async function o(t, o) {
+	const r = new e(t.dbName);
+	try {
+		const e = await r.auditLog.count();
+		if (0 === e) return {
+			total: 0,
+			replicated: 0,
+			destroyed: 0,
+			reason: "nothing_to_replicate"
+		};
+		if (!t.serverUrl) return {
+			total: e,
+			replicated: 0,
+			destroyed: e,
+			reason: "local_only"
+		};
+		let s = 0, i = 0;
+		for (;;) {
+			const e = await r.auditLog.orderBy("id").offset(i).limit(500).toArray();
+			if (0 === e.length) break;
+			for (const r of n(e).values()) s += await a(t.serverUrl, o, r);
+			if (i += e.length, e.length < 500) break;
+		}
+		return {
+			total: e,
+			replicated: s,
+			destroyed: Math.max(e - s, 0),
+			...0 === s ? { reason: "unreachable" } : {}
+		};
+	} catch (s) {
+		return console.warn("[WorkspaceDelete] could not read the workspace audit log before deleting it", s), {
+			total: 0,
+			replicated: 0,
+			destroyed: 0,
+			reason: "unreachable"
+		};
+	} finally {
+		r.close();
+	}
+}
+export { o as preserveWorkspaceAuditLog };
