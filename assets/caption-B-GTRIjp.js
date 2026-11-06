@@ -1,0 +1,1 @@
+import{Xt as s}from"./file-types-BFVARxEw.js";import{wn as t,xn as r}from"./vendor-D-hop8sq.js";import{r as a}from"./button-kgkek3hd.js";t();var e=r();function o({as:s,className:t,...r}){return(0,e.jsx)(s??"span",{className:a("text-2xs font-bold uppercase tracking-[.06em] text-muted-foreground whitespace-nowrap",t),...r})}export{o as t};
