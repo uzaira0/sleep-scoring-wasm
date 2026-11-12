@@ -1,0 +1,1 @@
+import{t}from"./physical-activity-CgrAxeUT.js";export{t as generateLocalPhysicalActivityExportRows};

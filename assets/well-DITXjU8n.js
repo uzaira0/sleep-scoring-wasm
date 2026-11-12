@@ -1,0 +1,1 @@
+import{rn as s}from"./file-types-BSbRSwM9.js";import{wn as r,xn as a}from"./vendor-CNQhrJpD.js";import{vr as e}from"./index-BGtBNj2F.js";r();var o=a();function n({as:s,className:r,...a}){return(0,o.jsx)(s??"div",{"data-surface":"well",className:e("rounded-lg bg-surface-well",r),...a})}export{n as t};
