@@ -1,0 +1,1 @@
+import{a as r}from"./rolldown-runtime-BEU_UCik.js";import{Cn as a,En as s}from"./vendor-D8u5Eg_S.js";import{kr as e}from"./index-CCTVCMYr.js";s();var o=a();function n({as:r,className:a,...s}){return(0,o.jsx)(r??"div",{"data-surface":"well",className:e("rounded-lg bg-surface-well",a),...s})}export{n as t};

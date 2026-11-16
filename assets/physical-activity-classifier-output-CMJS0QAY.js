@@ -1,1 +1,0 @@
-import{m as n}from"./workers-DjDabtoT.js";var r=n.PRESCHOOL_FREE_LIVING_RF_3_5;function t(n){const t=n.algorithmResults[r];return null!=t&&new Uint8Array(t).length>0}function s(n){const t=n.algorithmResults[r];if(!t)return null;const s=new Uint8Array(t);return s.length>0?s:null}export{t as n,s as r,r as t};

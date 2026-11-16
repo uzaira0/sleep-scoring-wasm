@@ -1,0 +1,255 @@
+import { Nn as t } from "./schema-MMK46mR-.js";
+import { t as e } from "./workspace-db-YhWSrcvp.js";
+import { o as r } from "./content-hash-D4_ZE65l.js";
+import { n, r as a, t as s } from "./preset-families-HrBVMIi7.js";
+import { t as i } from "./audit-hash-B_VayGEe.js";
+import { i as o, t as c } from "./wal-Bu50KF-H.js";
+import { n as l, t as p } from "./physical-activity-cutpoint-presets-DknwgBpP.js";
+import { t as f } from "./scoring-recipe-Bj-pitth.js";
+import { validateDiaryInstrumentMapping as d } from "./diary-instrument-mapping-DRkoXUQm.js";
+import { r as u } from "./diary-source-adapter-DV894YDw.js";
+import { i as m, n as y, t as w } from "./column-mapping-presets-nX3o10Wu.js";
+import { n as h, t as g } from "./pa-mask-nonwear-reset-DOV0w2E0.js";
+const A = a(n.SCORING_RECIPE).storageKey;
+const P = "sleep-scoring:workspace-preset-legacy-migration:v1";
+new class extends t {
+	claims;
+	constructor(t = "SleepScoringLegacyPresetMigrationClaims") {
+		super(t), this.version(1).stores({ claims: "key" });
+	}
+	async tryAcquire() {
+		try {
+			return await this.claims.add({
+				key: P,
+				state: "consumed"
+			}), !0;
+		} catch (t) {
+			if (t instanceof Error && "ConstraintError" === t.name) return !1;
+			throw t;
+		}
+	}
+	async releaseOwnedClaim() {
+		await this.claims.delete(P);
+	}
+}();
+var I = class extends Error {
+	constructor() {
+		super("Preset family payload is invalid."), this.name = "WorkspacePresetPayloadError";
+	}
+}, S = class extends Error {
+	constructor() {
+		super("Stored preset family record failed integrity validation."), this.name = "WorkspacePresetIntegrityError";
+	}
+}, j = class extends Error {
+	constructor() {
+		super("Preset family changed since it was loaded."), this.name = "WorkspacePresetConflictError";
+	}
+}, k = class extends Error {
+	result;
+	constructor(t) {
+		super("Workspace preset mutation was unnecessary."), this.name = "NoWorkspacePresetMutation", this.result = t;
+	}
+};
+function C(t) {
+	return "string" == typeof t && s.includes(t);
+}
+function E(t) {
+	if (!C(t)) throw new I();
+}
+function H(t) {
+	try {
+		const e = JSON.parse(t);
+		if (!Array.isArray(e)) throw new I();
+		return e;
+	} catch (e) {
+		if (e instanceof I) throw e;
+		throw new I();
+	}
+}
+const N = new Set(u.map((t) => t.key));
+function v(t) {
+	return null !== t && "object" == typeof t && !Array.isArray(t);
+}
+function O(t, e) {
+	if (E(t), "string" != typeof e) throw new I();
+	const r = H(e);
+	t === n.DIARY_MAPPING && function(t) {
+		for (const e of t) {
+			if (!v(e) || !v(e.mapping)) throw new I();
+			if ("epochLengthSeconds" in e || "devicePreset" in e) throw new I();
+			for (const r of Object.keys(e.mapping)) if (!N.has(r) && !(r in w)) throw new I();
+			const t = "instrumentVersionDefinitionId" in e;
+			if (t !== "instrumentMapping" in e) throw new I();
+			if (t) {
+				if ("string" != typeof e.instrumentVersionDefinitionId || !v(e.instrumentMapping)) throw new I();
+				const t = {};
+				for (const [r, n] of Object.entries(e.instrumentMapping)) {
+					if ("string" != typeof n) throw new I();
+					t[r] = n;
+				}
+				if (d(e.instrumentVersionDefinitionId, t).length > 0) throw new I();
+			}
+		}
+	}(r);
+	const s = a(t).storageKey, o = function(t, e) {
+		let r = e;
+		return {
+			storage: {
+				getItem: (e) => e === t ? r : null,
+				setItem(e, n) {
+					if (e !== t) throw new I();
+					r = n;
+				}
+			},
+			read: () => r
+		};
+	}(s, e);
+	try {
+		let e;
+		switch (t) {
+			case n.CSV_MAPPING:
+			case n.DIARY_MAPPING: {
+				const t = y(s, o.storage);
+				e = t.length, m(s, t, o.storage);
+				break;
+			}
+			case n.PHYSICAL_ACTIVITY_CUTPOINTS: {
+				const t = p(o.storage);
+				e = t.length, l(t, o.storage);
+				break;
+			}
+			case n.PHYSICAL_ACTIVITY_INCLUSION_RULES: {
+				const t = g(o.storage);
+				e = t.length, h(t, o.storage);
+				break;
+			}
+			case n.SCORING_RECIPE: {
+				const t = function(t = localStorage) {
+					try {
+						const e = t.getItem(A), r = e ? JSON.parse(e) : [];
+						return Array.isArray(r) ? r.flatMap((t) => {
+							const e = function(t) {
+								return "object" == typeof t && null !== t && !Array.isArray(t);
+							}(r = t) && "string" == typeof r.name && 0 !== r.name.trim().length ? {
+								name: r.name,
+								recipe: f(r.recipe)
+							} : null;
+							var r;
+							return e ? [e] : [];
+						}) : [];
+					} catch {
+						return [];
+					}
+				}(o.storage);
+				e = t.length, function(t, e = localStorage) {
+					const r = t.slice(0, 20);
+					e.setItem(A, JSON.stringify(r.map((t) => ({
+						name: t.name,
+						recipe: f(t.recipe)
+					})))), r.length, t.length, r.length;
+				}(t, o.storage);
+				break;
+			}
+		}
+		if (e !== r.length) throw new I();
+		return i(H(o.read()));
+	} catch (c) {
+		if (c instanceof I) throw c;
+		throw new I();
+	}
+}
+function _(t) {
+	if ("string" != typeof t) return !1;
+	try {
+		return new Date(t).toISOString() === t;
+	} catch {
+		return !1;
+	}
+}
+function D(t, e) {
+	if (void 0 !== e && (null !== e && !/^[0-9a-f]{64}$/.test(e) || (t?.contentHash ?? null) !== e)) throw new j();
+}
+async function M(t) {
+	try {
+		if ("object" != typeof t || null === t || Array.isArray(t)) throw new S();
+		const e = t, n = e.family, a = e.payloadVersion, s = e.serializedPayload, i = e.contentHash, o = e.createdAt, c = e.updatedAt;
+		if (!C(n) || 1 !== a || "string" != typeof s || "string" != typeof i || !/^[0-9a-f]{64}$/.test(i) || !_(o) || !_(c) || Date.parse(c) < Date.parse(o)) throw new S();
+		const l = O(n, s);
+		if (l === s) {
+			if (await r(l) !== i) throw new S();
+			return {
+				family: n,
+				payloadVersion: a,
+				serializedPayload: s,
+				contentHash: i,
+				createdAt: o,
+				updatedAt: c
+			};
+		}
+		if (await r(s) !== i) throw new S();
+		return {
+			family: n,
+			payloadVersion: a,
+			serializedPayload: l,
+			contentHash: await r(l),
+			createdAt: o,
+			updatedAt: c
+		};
+	} catch {
+		throw new S();
+	}
+}
+async function b(t, r = e()) {
+	E(t);
+	const n = await r.presetFamilies.get(t);
+	return n ? M(n) : void 0;
+}
+async function z(n, a, s = e(), i) {
+	const l = await async function(t, e) {
+		const n = O(t, e);
+		return {
+			family: t,
+			serializedPayload: n,
+			contentHash: await r(n),
+			presetCount: H(n).length
+		};
+	}(n, a), p = await s.presetFamilies.get(n), f = p ? await M(p) : void 0;
+	if (D(f, i), f && f.contentHash === l.contentHash && f.serializedPayload === l.serializedPayload) return {
+		record: f,
+		disposition: "deduplicated"
+	};
+	try {
+		return await o([s.presetFamilies], async () => {
+			const e = await s.presetFamilies.get(n), r = e ? await t.waitFor(M(e)) : void 0;
+			if (D(r, i), r?.contentHash === l.contentHash && r.serializedPayload === l.serializedPayload) throw new k({
+				record: r,
+				disposition: "deduplicated"
+			});
+			const a = function(t) {
+				const e = t ? Date.parse(t.updatedAt) + 1 : 0;
+				return new Date(Math.max(Date.now(), e)).toISOString();
+			}(r), o = {
+				family: n,
+				payloadVersion: 1,
+				serializedPayload: l.serializedPayload,
+				contentHash: l.contentHash,
+				createdAt: r?.createdAt ?? a,
+				updatedAt: a
+			}, p = r ? "updated" : "inserted";
+			return await s.presetFamilies.put(o), await c({
+				op: "preset_family_put",
+				payload: {
+					disposition: p,
+					record: o
+				}
+			}), {
+				record: o,
+				disposition: p
+			};
+		}, s);
+	} catch (d) {
+		if (d instanceof k) return d.result;
+		throw d;
+	}
+}
+export { b as loadWorkspacePresetFamily, z as upsertWorkspacePresetFamily };
