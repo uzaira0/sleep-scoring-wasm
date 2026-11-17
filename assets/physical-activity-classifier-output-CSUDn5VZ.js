@@ -1,1 +1,0 @@
-import{qt as n}from"./workspace-db-C8bVTeB-.js";var t=n.PRESCHOOL_FREE_LIVING_RF_3_5;function r(n){const r=n.algorithmResults[t];return null!=r&&new Uint8Array(r).length>0}function s(n){const r=n.algorithmResults[t];if(!r)return null;const s=new Uint8Array(r);return s.length>0?s:null}export{r as n,s as r,t};

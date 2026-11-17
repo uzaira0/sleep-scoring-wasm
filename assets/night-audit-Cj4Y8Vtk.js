@@ -1,0 +1,1 @@
+import{n}from"./audit-log-CG6LptBS.js";function i(i,r,t,o){return null===o?null:{...o,binding:o?.binding??n.captureWorkspaceBinding(i,r,t)}}export{i as t};
