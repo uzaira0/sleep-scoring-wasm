@@ -1,1 +1,0 @@
-import{m as r}from"./settings-registry-Bj_RFIQR.js";var t=r.valid_day_criteria;export{t};
