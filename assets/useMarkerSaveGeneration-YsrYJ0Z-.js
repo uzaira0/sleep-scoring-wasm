@@ -1,1 +1,0 @@
-import{rr as r}from"./settings-registry-Dg3ixjOt.js";import{En as t}from"./vendor-DFC31r6Y.js";import{it as s,rt as o}from"./data-source-DetdBGAr.js";var a=r(t(),1);function e(){return(0,a.useSyncExternalStore)(s,o,o)}export{e as t};
