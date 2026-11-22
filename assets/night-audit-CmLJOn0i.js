@@ -1,1 +1,0 @@
-import{n}from"./audit-log-BDu6vh4t.js";function i(i,r,t,o){return null===o?null:{...o,binding:o?.binding??n.captureWorkspaceBinding(i,r,t)}}export{i as t};

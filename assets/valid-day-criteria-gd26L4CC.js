@@ -1,0 +1,1 @@
+import{m as r}from"./settings-registry-B6LPOyRZ.js";var t=r.valid_day_criteria;export{t};
