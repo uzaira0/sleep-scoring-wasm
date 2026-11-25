@@ -1,0 +1,1 @@
+import{ir as r}from"./settings-registry-B6LPOyRZ.js";import{En as t}from"./vendor-CMhW0ek3.js";import{nt as s,rt as o}from"./data-source-CWmBJmYi.js";var a=r(t(),1);function e(){return(0,a.useSyncExternalStore)(o,s,s)}export{e as t};
