@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a problem using synthetic data only
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never attach participant recordings, diaries, identifiers, exports, or screenshots containing participant data.
+        Use the built-in synthetic demo or generated data. Report security vulnerabilities privately through SECURITY.md.
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 143 on Linux
+    validations:
+      required: true
+  - type: input
+    id: build
+    attributes:
+      label: Build or bundle ID
+      description: Copy the app version/build information, or the index-*.js bundle filename from browser developer tools.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Synthetic reproduction steps
+      description: Start with a fresh workspace and the built-in demo, or describe how to generate the synthetic input.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true

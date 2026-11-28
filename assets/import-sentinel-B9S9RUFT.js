@@ -1,0 +1,1 @@
+var r="sleep-scoring:import-in-progress";function e(e){return e?`${r}:${e.name}`:r}function t(e=r){try{localStorage.removeItem(e)}catch{}}export{t as n,e as r,r as t};

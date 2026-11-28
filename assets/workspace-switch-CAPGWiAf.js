@@ -1,0 +1,1 @@
+import{a as s,i as a,n as o,o as r,r as t,s as i,t as p}from"./workspace-switch--iBmfBCa.js";export{t as runWorkspaceScopeChange};

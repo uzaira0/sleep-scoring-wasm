@@ -1,0 +1,1 @@
+import{n as t,t as o}from"./contact-DPpuwcbS.js";export{t as ContactPage};

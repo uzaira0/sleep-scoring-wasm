@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private security report
+    url: https://github.com/uzaira0/sleep-scoring-wasm/security/advisories/new
+    about: Never post vulnerability details or participant data in public issues.

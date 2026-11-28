@@ -1,0 +1,1 @@
+var n=1073741824;function e(){return"undefined"==typeof navigator?void 0:navigator.deviceMemory}function t(){const e="undefined"==typeof navigator?void 0:navigator.deviceMemory;if("number"!=typeof e||!Number.isFinite(e)||e<=0)return n;const t=Math.floor(1024*e*1024*1024/4);return Math.min(2147483648,Math.max(n,t))}export{e as n,t};

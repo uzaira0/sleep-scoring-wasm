@@ -1,0 +1,1 @@
+import{n as r}from"./rolldown-runtime-Bb4YlvBr.js";import{Tn as o}from"./vendor-B2H4R0fg.js";import{g as n,h as s}from"./local-data-source-sync-BV1asi6c.js";var t=r(o(),1);function a(){return(0,t.useSyncExternalStore)(n,s,s)}export{a as t};

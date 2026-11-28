@@ -1,1 +1,0 @@
-import{ir as e}from"./settings-registry-B6LPOyRZ.js";import{Cn as s,En as a}from"./vendor-CMhW0ek3.js";import{wr as r}from"./index-Bgx9r9w-.js";var o=e(a(),1),i=s(),t=o.forwardRef(({className:e,...s},a)=>(0,i.jsx)("label",{ref:a,className:r("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",e),...s}));t.displayName="Label";export{t};

@@ -1,0 +1,1 @@
+import{s as t}from"./study-ggir-config-DjZmIIbu.js";import{G as r}from"./db-DzjxPcz_.js";async function s(s){return t((await r(s))?.extraSettings)}export{s as t};

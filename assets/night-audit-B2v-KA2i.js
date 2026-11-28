@@ -1,0 +1,1 @@
+import{a as n}from"./audit-log--WlMF-1f.js";function i(i,t,r,a){return null===a?null:{...a,binding:a?.binding??n.captureWorkspaceBinding(i,t,r)}}export{i as t};
